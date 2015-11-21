@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :investors
   get 'home/index'
 
   devise_for :users

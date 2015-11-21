@@ -1,0 +1,137 @@
+rails generate scaffold UnidadeMedida unidade:string
+
+rails generate scaffold ingrediente unidade_medida_id:integer descricao:string
+
+Aplicação corre em:
+https://pd4mealplanner-joaogoncalvespd4.c9.io/
+
+Criar Aplicação: rails news NOMEDAAPLICACAO
+Directorio: c:\Sites
+
+Servidor: rails s
+
+http://localhost:3000/
+
+-------------Bases de Dados-------------------------------
+
+Abrir o SQL 
+sqlite3 db/development.sqlite3
+
+lista tabelas: .tables
+Sair: .quit
+Esquemas: .schema
+
+Criar Tabela 
+Exemplo: rails generate scaffold Product title:string description:text image_url:string price:decimal
+Apagar: rails destroy scaffold products
+
+gera um ficheiro no directorio db
+
+Actualizar Tabela (ou qualquer coisa na base de dados)
+bundle exec rake db:migrate 
+
+rake db:test:clone - sicronizar bases de dados
+
+Acrescentar um campo : rails generate migration AddReceitumIdToReceitaIngredientes  receitum_id:integer 
+
+Criar uma tabela de ligação: Rails generate scaffold IngredientsRecipes recipe:references ingredient:reference
+
+:Apaga um campo: remove_column :recipe_procedures, :prodedures
+-----------Gems------------------------------
+
+gem install 
+
+bundle install
+
+
+----------------Git-----------------------------------
+
+git init = inicializar
+git status
+git add * (-f) = adicionar ficheiros - quando se cria novos
+git commit -m "nome"
+git log (sair: q)
+
+no C9 
+
+user:jsvalgonc@hotmail.com
+password:portugues e mumero
+
+criar git- git init
+criar remote - git remote add pd4mealplanner https://github.com/jsvalgonc/PD4.git
+adicionar ficheiros - git add --all (-f)
+commit - git commit -m 'added new files' (colocar o nome da versão)
+push - git push pd4mealplanner master
+
+------------------Testes------------------------------------
+
+debugger
+   install gem debugger    
+   gem 'debugger'
+   
+   ou 
+   install gem hel
+   gem 'byebug'
+   
+   colocar um linha no codigo "byebug" para fazer a paragem
+   
+   acrestar uma linha de codigo debugger
+n(ext) (or step) to move forward to the next line
+c(ont) to leave the debugger and let the program continue
+q(uit) to leave the debugger and shut down Rails
+    Capybara
+       save_and_open_page - abre a página html
+
+Cucumber
+
+bundle exec rake cucumber
+bundle exec cucumber features/CriaManterReceitas.feature (1 só feature, acrescentar :x – número da linha a correr)
+
+	
+irb
+irb –noreadline
+
+Escrever no log os parametros
+
+    params.each do |key,value|
+      Rails.logger.warn "JG " + "Param #{key}: #{value}"
+    end
+    
+-------------------nested forms-----------------------------------------
+http://www.createdbypete.com/articles/working-with-nested-forms-and-a-many-to-many-association-in-rails-4/
+http://asciicasts.com/episodes/196-nested-model-form-part-1
+https://css-tricks.com/how-to-create-a-notebook-design-with-css/
+http://railscasts.com/episodes/324-passing-data-to-javascript
+http://codepen.io/chriscoyier/pen/egHEK (tag)
+
+---------------------------------------------------------------------
+Lista de ingredientes
+http://ndb.nal.usda.gov/ndb/foods
+---------------------To Do --------------------------------------------
+
+Label
+ - rever
+Mudar menus semanais para o Control/View da week
+Controlo de Erros
+      - na importação
+      - no calculo de nutrientes por semana
+      - no calculo de nutrientes por receita
+
+A desenvolver 
+      - testes cucumber
+      - forma de apresentação da label com os resultados semanais
+
+Ideias
+      - fotos das receitas
+      - planeamento por casa
+      - planeamento por pessoa
+      - acrescentar quantidades no planeamento
+      - acrescentar as "não receitas"
+      - necessidade alimentares por pessoa
+      - comparação com as necessidades alimentares 
+      - parser de ingredientes
+      - página incial com receitas ou assim - tipo airbnb
+   
+
+Bugs 
+- menu semana - popup informação nutricional - altera a página principal 
