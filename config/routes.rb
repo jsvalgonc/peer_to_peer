@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
   
+  resources :account_movements
+  get '/account_movements/new_id/:id', :to => "account_movements#new_id", as: 'account_movements_id'
+  get '/account_movements/list_investor/:id_investor', :to => "account_movements#list_investor", as: 'account_movements_list_investor'
+  get 'investors/search'
   resources :investors
   get 'home/index'
+  
 
-  devise_for :users
+  #devise_for :users
   root :to => "home#index"
+  
+  #devise_for :users, :path_prefix => 'my' - comentado 22/11/2015 - implementação roles
+  devise_for :users
+  resources :users
   #JG 21/11/2015
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

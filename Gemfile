@@ -23,8 +23,10 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+
 # Gem projecto JG
 gem 'devise'
+gem "factory_girl_rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -40,7 +42,7 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
-
+  gem "factory_girl_rails"
 end
 
 group :development do

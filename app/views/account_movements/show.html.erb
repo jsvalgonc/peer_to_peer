@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @account_movement.user %>
+</p>
+
+<p>
+  <strong>Value date:</strong>
+  <%= @account_movement.value_date %>
+</p>
+
+<p>
+  <strong>Movement date:</strong>
+  <%= @account_movement.movement_date %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @account_movement.value %>
+</p>
+
+<%= link_to 'Edit', edit_account_movement_path(@account_movement) %> |
+<%= link_to 'Back', account_movements_path %>

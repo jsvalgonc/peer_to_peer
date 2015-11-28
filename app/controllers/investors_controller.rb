@@ -10,6 +10,7 @@ class InvestorsController < ApplicationController
   # GET /investors/1
   # GET /investors/1.json
   def show
+    @investor = Investor.find(params[:id])
   end
 
   # GET /investors/new
@@ -59,6 +60,14 @@ class InvestorsController < ApplicationController
       format.html { redirect_to investors_url, notice: 'Investor was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  #def new_search
+  #  @investors = Investor.search(params[:search])
+  #end
+  
+  def search
+    @investors = Investor.search(params[:search])
   end
 
   private

@@ -3,6 +3,10 @@ module NavigationHelpers
     case page_name
     when /Registo Inicial/ then '/users/sign_up'
     when /Registo de Investidor/ then '/investors/new'
+    when /Selecionar investidor/ then '/investors/search'
+    when /^the page Consultar Conta for "(.*)"$/ then
+        account_movements_list_investor_path(Investor.find_by_full_name($1))
+    #when /Consultar Conta/ then '/account_movements/list_investor/'
     else
       begin
         page_name =~ /the (.*) page/
@@ -17,3 +21,4 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
+World(FactoryGirl::Syntax::Methods)

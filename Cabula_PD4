@@ -103,35 +103,5 @@ http://asciicasts.com/episodes/196-nested-model-form-part-1
 https://css-tricks.com/how-to-create-a-notebook-design-with-css/
 http://railscasts.com/episodes/324-passing-data-to-javascript
 http://codepen.io/chriscoyier/pen/egHEK (tag)
-
----------------------------------------------------------------------
-Lista de ingredientes
-http://ndb.nal.usda.gov/ndb/foods
----------------------To Do --------------------------------------------
-
-Label
- - rever
-Mudar menus semanais para o Control/View da week
-Controlo de Erros
-      - na importação
-      - no calculo de nutrientes por semana
-      - no calculo de nutrientes por receita
-
-A desenvolver 
-      - testes cucumber
-      - forma de apresentação da label com os resultados semanais
-
-Ideias
-      - fotos das receitas
-      - planeamento por casa
-      - planeamento por pessoa
-      - acrescentar quantidades no planeamento
-      - acrescentar as "não receitas"
-      - necessidade alimentares por pessoa
-      - comparação com as necessidades alimentares 
-      - parser de ingredientes
-      - página incial com receitas ou assim - tipo airbnb
-   
-
-Bugs 
-- menu semana - popup informação nutricional - altera a página principal 
+--------------------autenticação e roles------------------------------------------
+https://github.com/RailsApps/rails-devise-roles

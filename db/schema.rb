@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121221140) do
+ActiveRecord::Schema.define(version: 20151122181258) do
+
+  create_table "account_movements", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "value_date"
+    t.date     "movement_date"
+    t.decimal  "value"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "account_movements", ["user_id"], name: "index_account_movements_on_user_id"
 
   create_table "investors", force: :cascade do |t|
     t.string   "full_name"
@@ -38,6 +49,7 @@ ActiveRecord::Schema.define(version: 20151121221140) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

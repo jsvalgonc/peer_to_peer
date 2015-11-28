@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  value_date: 2015-11-22
+  movement_date: 2015-11-22
+  value: 9.99
+
+two:
+  user_id: 
+  value_date: 2015-11-22
+  movement_date: 2015-11-22
+  value: 9.99

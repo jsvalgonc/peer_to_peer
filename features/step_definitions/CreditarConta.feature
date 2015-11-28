@@ -4,12 +4,19 @@ Feature: Creditar Conta - 5
   I want to credit investor account
 
 Scenario:Creditar Conta
-  Given I am authenticated as a Manager
-  Given I am on the "Creditar Conta"
-  When fill in "NIF" with "12345678"
-  And  I press "Consultar"
+
+  Given there's a investor named "Jose Silva" 
+  
+  Given I am not authenticated 
+
+  Given I am authenticated as a Financial Manager
+  Given I am on the "Selecionar investidor"
+  When fill in "search" with "Jos"
+  And  I press "Pesquisar"
   Then I should see "Jose Silva"
-  When fill in "Montante a Creditar" with "100"
-  And  I press "Creditar"
-  Then I should see "Saldo=100"
+  When In line "Jose" I press "Movimentar"
+  Then I should see "Novo Movimento em Conta"
+  When fill in "account_movement_value" with "100"
+  And  I press "Registar"
+  Then I should see "successfully created"
   

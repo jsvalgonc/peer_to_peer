@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<% byebug %>
+<h1>Listing Account Movements</h1>
+<p></p>
+  <th>User</th>
+  <td><%= @account_movements[0].user_id %></td>
+<p></p>
+<table>
+  <thead>
+    <tr>
+      <th>Value date</th>
+      <th>Movement date</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @account_movements.each do |account_movement| %>
+      <tr>
+        <td><%= account_movement.value_date %></td>
+        <td><%= account_movement.movement_date %></td>
+        <td><%= account_movement.value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
