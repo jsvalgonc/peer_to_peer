@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+Interesse Registado
+<p>
+  <strong>Investor:</strong>
+  <%= @deal.investor.full_name %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @deal.project.description %>
+</p><p>
+  <strong>Value:</strong>
+  <%= @deal.value %>
+</p>
+<p>
+  <strong>Confirmed:</strong>
+  <%= @deal.confirmed %>
+</p>
+
+<p>
+  <strong>Confirmation date:</strong>
+  <%= @deal.confirmation_date %>
+</p>
+
+<p>
+  <strong>Saldo:</strong>
+  <%= @deal.investor.saldo %>
+</p>
+
+<%= link_to 'Edit', edit_deal_path(@deal) %> |
+<%= link_to 'Back', deals_path %>

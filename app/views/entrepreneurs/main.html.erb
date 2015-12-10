@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @entrepreneur.full_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @entrepreneur.address %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @entrepreneur.zip_code %>
+</p>
+
+<p>
+  <strong>Town:</strong>
+  <%= @entrepreneur.town %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @entrepreneur.country %>
+</p>
+
+<p>
+  <strong>Fiscal number:</strong>
+  <%= @entrepreneur.fiscal_number %>
+</p>
+
+________________________
+
+<%= button_to 'Criar Projecto', project_new_by_entrepreneur_path(@entrepreneur), method: :get %>
+___________________________
+
+
+
+<%= link_to 'Edit', edit_entrepreneur_path(@entrepreneur) %> |
+<%= link_to 'Back', entrepreneurs_path %>

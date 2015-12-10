@@ -1,15 +1,30 @@
 Rails.application.routes.draw do
   
-  resources :account_movements
+  resources :deals
+  resources :deals
+  resources :projects
+  resources :projects
+  get '/application/main_admin', :to => "application#main_admin", as: 'main_admin'
   get '/account_movements/new_id/:id', :to => "account_movements#new_id", as: 'account_movements_id'
   get '/account_movements/list_investor/:id_investor', :to => "account_movements#list_investor", as: 'account_movements_list_investor'
   get 'investors/search'
+  get '/entrepreneurs/main/:id', :to => "entrepreneurs#main", as: 'entrepreneur_main'
+  get '/projects/new_by_entrepreneur/:id_entrepreneur', :to => "projects#new_by_entrepreneur", as:"project_new_by_entrepreneur"
+  get '/projects/index_investor/:id_investor', :to => "projects#index_investor", as:"index_investor"
+  get '/deal/new_deal_investor_project/:id_investor/:id_project', :to => "deals#new_deal_investor_project", as:"new_deal_investor_project"
+  resources :entrepreneurs
+  resources :account_movements
   resources :investors
-  get 'home/index'
+  #authenticated :user do
+  #  root to: "devise/sessions#new", :as => "authenticated_root"
+  #end
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
   
-
+  #get 'home/index'
   #devise_for :users
-  root :to => "home#index"
+  #root :to => "home#index"
   
   #devise_for :users, :path_prefix => 'my' - comentado 22/11/2015 - implementação roles
   devise_for :users

@@ -1,5 +1,5 @@
 class InvestorsController < ApplicationController
-  before_action :set_investor, only: [:show, :edit, :update, :destroy]
+  before_action :set_investor, only: [:show, :edit, :update, :destroy, :saldo]
 
   # GET /investors
   # GET /investors.json
@@ -68,6 +68,16 @@ class InvestorsController < ApplicationController
   
   def search
     @investors = Investor.search(params[:search])
+  end
+  
+  def saldo
+    byebug
+    saldo_investor = 0  
+    @account_movements=AccountMovement.where("investor_id=" + investor.id)
+    @account_movements.each do |account_movement|
+      saldo_investor = saldo_investor + account_movement.value
+    end
+    saldo_investor
   end
 
   private

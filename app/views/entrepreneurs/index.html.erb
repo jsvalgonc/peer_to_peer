@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Entrepreneurs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Address</th>
+      <th>Zip code</th>
+      <th>Town</th>
+      <th>Country</th>
+      <th>Fiscal number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entrepreneurs.each do |entrepreneur| %>
+      <tr>
+        <td><%= entrepreneur.full_name %></td>
+        <td><%= entrepreneur.address %></td>
+        <td><%= entrepreneur.zip_code %></td>
+        <td><%= entrepreneur.town %></td>
+        <td><%= entrepreneur.country %></td>
+        <td><%= entrepreneur.fiscal_number %></td>
+        <td><%= link_to 'Show', entrepreneur %></td>
+        <td><%= link_to 'Edit', edit_entrepreneur_path(entrepreneur) %></td>
+        <td><%= link_to 'Destroy', entrepreneur, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entrepreneur', new_entrepreneur_path %>

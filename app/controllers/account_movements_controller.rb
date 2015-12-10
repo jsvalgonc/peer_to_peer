@@ -67,8 +67,7 @@ class AccountMovementsController < ApplicationController
   end
   
   def list_investor
-    byebug
-    @account_movements = AccountMovement.where("user_id = ?",params[:id_investor])
+    @account_movements = AccountMovement.where("investor_id = ?",params[:id_investor])
   end
 
   private
@@ -79,6 +78,6 @@ class AccountMovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_movement_params
-      params.require(:account_movement).permit(:user_id, :value_date, :movement_date, :value)
+      params.require(:account_movement).permit(:investor_id, :value_date, :movement_date, :value)
     end
 end

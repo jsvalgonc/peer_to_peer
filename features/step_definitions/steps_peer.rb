@@ -8,10 +8,23 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
 end
 
 
+When /^I select "([^"]*)" as the (.+) "([^"]*)" date$/ do |date, model, selector|
+  date = Date.parse(date)
+  select(date.year.to_s, :from => "#{model}[#{selector}(1i)]")
+  select(date.strftime("%B"), :from => "#{model}[#{selector}(2i)]")
+  select(date.day.to_s, :from => "#{model}[#{selector}(3i)]")
+end
+
+
+
+
 When /^In line "(.*?)" I press "(.*?)"$/ do |line,button|
   find(:xpath, "//tr[contains(.,line)]/td/a", :text => button).click
 end
 
+When(/^I chosee "(.*?)" from drop box "(.*?)"$/) do |option, box|
+  select(option, :from => box)
+end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
@@ -58,9 +71,8 @@ Given(/^there's a investor named "(.*?)"$/) do |full_name|
 end
 
 Given(/^there's a movement of (\d+) in "(.*?)" account$/) do |value, investor|
-  byebug
-  @account_movements = FactoryGirl.create(:account_movement, value: value)
-  byebug
+  @investor = FactoryGirl.create(:investor, full_name: investor)
+  @account_movements = FactoryGirl.create(:account_movement, value: value, investor: @investor)
 end
 
 Given(/^I am authenticated as "(.*?)"$/) do |arg1|
@@ -74,6 +86,16 @@ Given(/^I am authenticated as "(.*?)"$/) do |arg1|
   click_button "Entrar"
 end
 
+Given(/^there's a entrepreneur named "(.*?)"$/) do |full_name|
+  #@investor = FactoryGirl.create(:investor, full_name: full_name, address: "Rua do Lá Vai Um, n.1, 456º Frente", zip_code: "1000-000",town: "Lisboa",country: "Portugal",fiscal_number: "12345678")
+  @investor = FactoryGirl.create(:guedes, full_name: full_name)
+end
+
+Given(/^there's a project named "(.*?)" by "(.*?)"$/) do |project, entrepreneur|  #@investor = FactoryGirl.create(:investor, full_name: full_name, address: "Rua do Lá Vai Um, n.1, 456º Frente", zip_code: "1000-000",town: "Lisboa",country: "Portugal",fiscal_number: "12345678")
+#  Falta fazer a ligação ao investidor
+  @entrepreneur = FactoryGirl.create(:entrepreneur, full_name: entrepreneur)
+  @project = FactoryGirl.create(:ArrumarCarros,description: project, entrepreneur: @entrepreneur)
+end
 
 
 World(NavigationHelpers)

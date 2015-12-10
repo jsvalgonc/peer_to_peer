@@ -35,5 +35,7 @@
   <%= @investor.fiscal_number %>
 </p>
 
+<%= link_to 'Conta Corrente', account_movements_list_investor_path(@investor) %> |
+<%= link_to 'Investir', index_investor_path(@investor) %> |
 <%= link_to 'Edit', edit_investor_path(@investor) %> |
 <%= link_to 'Back', investors_path %>

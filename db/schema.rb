@@ -11,30 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122181258) do
+ActiveRecord::Schema.define(version: 20151209000725) do
 
   create_table "account_movements", force: :cascade do |t|
-    t.integer  "user_id"
     t.date     "value_date"
     t.date     "movement_date"
     t.decimal  "value"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "investor_id"
   end
 
-  add_index "account_movements", ["user_id"], name: "index_account_movements_on_user_id"
+  add_index "account_movements", ["investor_id"], name: "index_account_movements_on_investor_id"
 
-  create_table "investors", force: :cascade do |t|
-    t.string   "full_name"
-    t.string   "address"
-    t.string   "zip_code"
-    t.string   "town"
-    t.string   "country"
-    t.string   "NIF"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "fiscal_number"
+  create_table "deals", force: :cascade do |t|
+    t.integer  "investor_id"
+    t.integer  "value"
+    t.boolean  "confirmed"
+    t.date     "confirmation_date"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "project_id"
   end
+
+  add_index "deals", ["investor_id"], name: "index_deals_on_investor_id"
+  add_index "deals", ["project_id"], name: "index_deals_on_project_id"
+
+# Could not dump table "entrepreneurs" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+# Could not dump table "investors" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "value"
+    t.text     "description"
+    t.date     "start_date"
+    t.integer  "duration"
+    t.integer  "entrepreneur_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "status"
+  end
+
+  add_index "projects", ["entrepreneur_id"], name: "index_projects_on_entrepreneur_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
