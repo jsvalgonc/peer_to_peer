@@ -16,7 +16,7 @@
   <tbody>
     <% @account_movements.each do |account_movement| %>
       <tr>
-        <td><%= account_movement.user %></td>
+        <td><%= account_movement.investor.full_name %></td>
         <td><%= account_movement.value_date %></td>
         <td><%= account_movement.movement_date %></td>
         <td><%= account_movement.value %></td>

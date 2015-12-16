@@ -1,4 +1,7 @@
-
+https://www.google.pt/search?q=db%3Aschema%3Aload+RAILS_ENV%3Dtest&oq=db%3Aschema%3Aload+RAILS_ENV%3Dtest&aqs=chrome..69i57j69i58.534j0j4&sourceid=chrome&es_sm=93&ie=UTF-8
+http://stackoverflow.com/questions/16632216/rake-dbtestprepare-does-not-setup-test-databse
+http://stackoverflow.com/questions/7693365/whats-the-difference-between-dbtestclone-dbtestclone-structure-dbtestlo
+___________________
 Aplicação corre em:
 https://pd4mealplanner-joaogoncalvespd4.c9.io/
 
@@ -27,6 +30,7 @@ gera um ficheiro no directorio db
 
 Actualizar Tabela (ou qualquer coisa na base de dados)
 bundle exec rake db:migrate 
+bundle exec rake db:test:prepare (actualizar teste/cucumber)
 
 rake db:test:clone - sicronizar bases de dados
 
@@ -38,6 +42,22 @@ Apaga um campo: rails generate migration RemoveFieldNameFromTableName field_name
 
 
 Quando fica parado:spring stop
+
+Apagar um campo numa tabela
+Criar nova tabela - CREATE TABLE t1_backup(a,b);
+Transferir dados - INSERT INTO t1_backup SELECT a,b FROM t1;
+Apagar tabela anterior - DROP TABLE t1;
+Renomear tabela - ALTER TABLE t1_backup RENAME TO t1;
+
+
+Regenerar schema
+bundle exec rake db:schema:dump
+
+Reconstruir base de dados de teste
+bundle exec rake db:schema:load RAILS_ENV=test -t
+
+
+
 -----------Gems------------------------------
 
 gem install 

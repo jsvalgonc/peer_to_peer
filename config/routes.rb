@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #  root to: "devise/sessions#new", :as => "authenticated_root"
   #end
   devise_scope :user do
-    root to: "devise/sessions#new"
+    root to: "devise/sessions#new", :controllers => { registrations: 'registrations' }
   end
   
   #get 'home/index'
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   #root :to => "home#index"
   
   #devise_for :users, :path_prefix => 'my' - comentado 22/11/2015 - implementação roles
-  devise_for :users
+  devise_for :users , :controllers => { registrations: 'registrations' }
   resources :users
   #JG 21/11/2015
 

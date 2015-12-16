@@ -17,6 +17,14 @@ FactoryGirl.define do
     NIF "12345678"
   end
   
+ #Investidor
+ 
+  factory :user_lopes, class: User do
+    email "jose.lopes@teste.com"
+    role :investor
+    password "secretpass"
+  end
+
   factory :lopes, class: Investor do
     full_name "Jose Lopes"
     address "Rua do Lá Vai Um"
@@ -24,10 +32,11 @@ FactoryGirl.define do
     town "Lisboa"
     country "Portugal"
     NIF "12345678"
+    association :user, factory: :user_lopes
   end
   
   factory :account_movement do
-    association :investor, factory: :silva
+    association :investor, factory: :lopes
     value_date Time.now
     movement_date Time.now
     value 1

@@ -59,28 +59,37 @@ Given /^I am authenticated as a Financial Manager$/ do
   role = :finance
   User.new(:email => email, :password => password, :password_confirmation => password, :role => role).save!
 
-  visit 'users/sign_in'
+  visit 'sign_in'
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
   click_button "Entrar"
 end
 
-Given(/^there's a investor named "(.*?)"$/) do |full_name|
+
+
+Given(/^there's a investor named "(.*?)" with user "(.*?)"$/) do |full_name, user|
   #@investor = FactoryGirl.create(:investor, full_name: full_name, address: "Rua do Lá Vai Um, n.1, 456º Frente", zip_code: "1000-000",town: "Lisboa",country: "Portugal",fiscal_number: "12345678")
-  @investor = FactoryGirl.create(:investor)
+  @user = User.find_by_email(user)
+  @investor = FactoryGirl.create(:lopes, user: @user)
 end
 
+Given(/^there's a user named "(.*?)"$/) do |full_name|
+  #@investor = FactoryGirl.create(:investor, full_name: full_name, address: "Rua do Lá Vai Um, n.1, 456º Frente", zip_code: "1000-000",town: "Lisboa",country: "Portugal",fiscal_number: "12345678")
+  @investor = FactoryGirl.create(:user_lopes)
+end
+
+
 Given(/^there's a movement of (\d+) in "(.*?)" account$/) do |value, investor|
-  @investor = FactoryGirl.create(:investor, full_name: investor)
+  @investor = Investor.find_by_full_name(investor)
   @account_movements = FactoryGirl.create(:account_movement, value: value, investor: @investor)
 end
 
 Given(/^I am authenticated as "(.*?)"$/) do |arg1|
-  email = 'josesilva@man.net'
+  email = 'jose.lopes@teste.com'
   password = 'secretpass'
-  role = :investor
-  User.new(:email => email, :password => password, :password_confirmation => password, :role => role).save!
-  visit 'users/sign_in'
+  #role = :investor
+  #User.new(:email => email, :password => password, :password_confirmation => password, :role => role).save!
+  visit 'sign_in'
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
   click_button "Entrar"
@@ -99,3 +108,6 @@ end
 
 
 World(NavigationHelpers)
+
+
+

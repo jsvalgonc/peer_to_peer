@@ -1,7 +1,9 @@
 class Investor < ActiveRecord::Base
 has_many :account_movements
 has_many :deals
-
+belongs_to :user
+  
+  
 def self.search(search)
   if search
     where('full_name LIKE ?', "%#{search}%")

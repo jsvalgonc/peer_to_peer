@@ -37,11 +37,30 @@ ActiveRecord::Schema.define(version: 20151209000725) do
   add_index "deals", ["investor_id"], name: "index_deals_on_investor_id"
   add_index "deals", ["project_id"], name: "index_deals_on_project_id"
 
-# Could not dump table "entrepreneurs" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "entrepreneurs", force: :cascade do |t|
+    t.text     "full_name"
+    t.text     "address"
+    t.text     "zip_code"
+    t.text     "town"
+    t.text     "country"
+    t.text     "fiscal_number"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+  end
 
-# Could not dump table "investors" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "investors", force: :cascade do |t|
+    t.string   "full_name"
+    t.string   "address"
+    t.string   "zip_code"
+    t.string   "town"
+    t.string   "country"
+    t.string   "NIF"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "fiscal_number"
+    t.integer  "user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.integer  "value"

@@ -11,7 +11,8 @@ Scenario:Invest
   Given there's a entrepreneur named "Jose Guedes" 
   Given there's a project named "Arrumar Carros" by "Jose Guedes"
   Given I am not authenticated 
-  Given I am authenticated as "Antonio Silva"
+  Given I am authenticated as a Financial Manager
+  #Given I am authenticated as "Antonio Silva"
   Given I am on the Selecionar Projecto for "Antonio Silva"
   When In line "Arrumar Carros" I press "Selecionar"
   Then I should see "Investimento Selecionado"

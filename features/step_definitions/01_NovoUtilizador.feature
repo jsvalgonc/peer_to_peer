@@ -10,4 +10,4 @@ Scenario:Registo Inicial
   When fill in "user_password" with "12345678"
   When fill in "user_password_confirmation" with "12345678"
   And  I press "Registar"
-  Then I should see "Welcome"
+  Then I should see "Bemvindo"
