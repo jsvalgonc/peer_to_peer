@@ -12,6 +12,7 @@ class AccountMovementsController < ApplicationController
   # GET /account_movements/1
   # GET /account_movements/1.json
   def show
+    byebug
     authorize @account_movement
   end
 
@@ -24,6 +25,7 @@ class AccountMovementsController < ApplicationController
   def new_id
     @investor = Investor.find(params[:id])
     @account_movement = AccountMovement.new
+    @account_movement.investor_id = @investor.id 
   end
 
   # GET /account_movements/1/edit
@@ -74,16 +76,15 @@ class AccountMovementsController < ApplicationController
   end
   
   def list_investor
-    #@account_movements = AccountMovement.where("investor_id = ?",params[:id_investor])
-    #@account_movements  = policy_scope(AccountMovement).where(:investor_id => params[:id_investor])
-    #authorize @account_movements
+    authorize AccountMovement    
+    account_movements_todos=policy_scope(AccountMovement)
+    @account_movements = account_movements_todos.where("investor_id = ?",params[:id_investor])
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account_movement
-      @account_movements  = policy_scope(AccountMovement).where(:investor_id => params[:id_investor])
-      #@account_movement = AccountMovement.find(params[:id])
+      @account_movement = AccountMovement.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

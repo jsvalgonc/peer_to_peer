@@ -1,15 +1,18 @@
 class EntrepreneursController < ApplicationController
   before_action :set_entrepreneur, only: [:show, :edit, :update, :destroy, :main]
-
+  before_action :authenticate_user!
   # GET /entrepreneurs
   # GET /entrepreneurs.json
   def index
     @entrepreneurs = Entrepreneur.all
+    authorize Entrepreneur
   end
 
   # GET /entrepreneurs/1
   # GET /entrepreneurs/1.json
   def show
+    @entrepreneur = Entrepreneur.find(params[:id])
+    authorize @entrepreneur
   end
   
   def main
@@ -17,16 +20,26 @@ class EntrepreneursController < ApplicationController
 
   # GET /entrepreneurs/new
   def new
+    authorize Entrepreneur
     @entrepreneur = Entrepreneur.new
   end
+  
+  
+  def new_by_user
+    user = User.find params[:user_id]
+    @entrepreneur=user.entrepreneurs.build(:user_id=>user.id)
+  end
+  
 
   # GET /entrepreneurs/1/edit
   def edit
+    authorize @entrepreneur
   end
 
   # POST /entrepreneurs
   # POST /entrepreneurs.json
   def create
+    authorize Entrepreneur
     @entrepreneur = Entrepreneur.new(entrepreneur_params)
 
     respond_to do |format|
@@ -43,6 +56,8 @@ class EntrepreneursController < ApplicationController
   # PATCH/PUT /entrepreneurs/1
   # PATCH/PUT /entrepreneurs/1.json
   def update
+    @entrepreneur = Entrepreneur.find(params[:id])
+    authorize @entrepreneur
     respond_to do |format|
       if @entrepreneur.update(entrepreneur_params)
         format.html { redirect_to @entrepreneur, notice: 'Entrepreneur was successfully updated.' }
@@ -57,6 +72,8 @@ class EntrepreneursController < ApplicationController
   # DELETE /entrepreneurs/1
   # DELETE /entrepreneurs/1.json
   def destroy
+    @entrepreneur = Entrepreneur.find(params[:id])
+    authorize @entrepreneur
     @entrepreneur.destroy
     respond_to do |format|
       format.html { redirect_to entrepreneurs_url, notice: 'Entrepreneur was successfully destroyed.' }
@@ -72,6 +89,6 @@ class EntrepreneursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entrepreneur_params
-      params.require(:entrepreneur).permit(:full_name, :address, :zip_code, :town, :country, :fiscal_number)
+      params.require(:entrepreneur).permit(:full_name, :address, :zip_code, :town, :country, :fiscal_number, :user_id)
     end
 end

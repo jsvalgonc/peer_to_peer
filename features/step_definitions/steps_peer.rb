@@ -1,6 +1,7 @@
 Given /^I am on (.+)$/ do |page_name|
   path_to_page_name = path_to(page_name)
   visit path_to_page_name 
+  save_and_open_page
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
@@ -30,6 +31,9 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
+When /^(?:|I )choose button "([^"]*)"$/ do |option|
+  choose(option)
+end
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)
@@ -37,6 +41,7 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
     assert page.has_content?(text)
   end
 end
+
 
 Given /^I am a new, authenticated user$/ do
   email = 'testing@man.net'
@@ -64,8 +69,6 @@ Given /^I am authenticated as a Financial Manager$/ do
   fill_in "user_password", :with => password
   click_button "Entrar"
 end
-
-
 
 Given(/^there's a investor named "(.*?)" with user "(.*?)"$/) do |full_name, user|
   #@investor = FactoryGirl.create(:investor, full_name: full_name, address: "Rua do Lá Vai Um, n.1, 456º Frente", zip_code: "1000-000",town: "Lisboa",country: "Portugal",fiscal_number: "12345678")

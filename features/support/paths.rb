@@ -6,7 +6,7 @@ module NavigationHelpers
     when /Registo de Empreendedor/ then '/entrepreneurs/new'
     when /^the main entrepreneur page for "(.*)"$/ then 
       entrepreneur_main_path(Entrepreneur.find_by_full_name($1))
-    when /Selecionar investidor/ then '/investors/search'
+    when /Selecionar investidor/ then '/investors'
     when /^the page Consultar Conta for "(.*)"$/ then
         account_movements_list_investor_path(Investor.find_by_full_name($1))
     when /^the Selecionar Projecto for "(.*)"$/ then

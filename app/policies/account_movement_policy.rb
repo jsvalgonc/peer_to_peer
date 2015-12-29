@@ -6,19 +6,20 @@ class AccountMovementPolicy < ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    byebug
+    user.admin? || user.finance? || (user.investor? || Investor.find_by_user_id(user.id).id==record.id )
   end
 
   def create?
-    user.admin? || user.finance?
+    user.admin? || user.finance? 
   end
 
   def new?
-    user.admin? || user.finance?
+    user.admin? || user.finance? 
   end
 
   def update?
-    user.admin? || user.finance?
+    user.admin? || user.finance? 
   end
 
   def edit?
@@ -34,16 +35,38 @@ class AccountMovementPolicy < ApplicationPolicy
   end
   
   def list_investor?
+    user.admin? || user.finance? || user.investor?
   end
-  
-  class Scope < Scope
+
+  class Scope
+    attr_reader :user, :scope
+
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
     def resolve
-      #scope.where(user: user)
-      if user.admin? || user.finance? then
-        scope.where(investor_id: :all)
+      if user.admin?
+        scope.all
       else
-        scope.where(investor_id:  Investor.find_by_user_id(user.id).id)
+        byebug
+        investor=Investor.find_by_user_id(@user.id)
+        @scope.where(investor_id: investor.id)
       end
     end
   end
+  
+  
+  
+#  class Scope < Scope
+#    def resolve
+#      #scope.where(user: user)
+#      if user.admin? || user.finance? then
+#        scope.where(investor_id: :all)
+#      else
+#        scope.where(investor_id:  Investor.find_by_user_id(user.id).id)
+#      end
+#    end
+#  end
 end

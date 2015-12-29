@@ -28,9 +28,10 @@ FactoryGirl.define do
   factory :lopes, class: Investor do
     full_name "Jose Lopes"
     address "Rua do Lá Vai Um"
-    zip_code "1000"
+    zip_code "1000-000"
     town "Lisboa"
     country "Portugal"
+    fiscal_number 1
     NIF "12345678"
     association :user, factory: :user_lopes
   end

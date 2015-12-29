@@ -1,17 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Investors</h1>
+<%= form_tag investors_search_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Pesquisar", :name => nil %>
+  </p>
+<% end %>
+
+
+<h1>Investidores</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Full name</th>
-      <th>Address</th>
-      <th>Zip code</th>
-      <th>Town</th>
-      <th>Country</th>
-      <th>Nif</th>
-      <th>fiscal_number</th>
+      <th>Nome</th>
+      <th>Morada</th>
+      <th>Codigo Postal</th>
+      <th>Localidade</th>
+      <th>Pais</th>
+      <th>NIF</th>
+      <th>Numero Fiscal</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,9 +34,10 @@
         <td><%= investor.country %></td>
         <td><%= investor.NIF %></td>
         <td><%= investor.fiscal_number %></td>
-        <td><%= link_to 'Show', investor %></td>
-        <td><%= link_to 'Edit', edit_investor_path(investor) %></td>
-        <td><%= link_to 'Destroy', investor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Movimentar', account_movements_id_path(investor) %></td>
+        <td><%= link_to 'Mostrar', investor %></td>
+        <td><%= link_to 'Editar', edit_investor_path(investor) %></td>
+        <td><%= link_to 'Apagar', investor, method: :delete, data: { confirm: 'Confirma?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +45,4 @@
 
 <br>
 
-<%= link_to 'New Investor', new_investor_path %>
+<%= link_to 'Novo Investidor', new_investor_path %>

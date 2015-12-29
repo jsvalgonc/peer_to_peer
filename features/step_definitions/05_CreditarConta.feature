@@ -5,7 +5,7 @@ Feature: Creditar Conta - 5
 
 Scenario:Creditar Conta
 
-  Given there's a investor named "Jose Silva" 
+  Given there's a investor named "Jose Silva" with user "j.silva@teste.com" 
   
   Given I am not authenticated 
 

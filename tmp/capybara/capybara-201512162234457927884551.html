@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <link rel="stylesheet" media="all" href="/assets/application.css" data-turbolinks-track="true" />
+  <script src="/assets/application.js" data-turbolinks-track="true"></script>
+  
+  <p class="notice">Welcome! You have signed up successfully.</p>
+</head>
+<body>
+<div id="flash">
+    <div class="alert alert-notice">Welcome! You have signed up successfully.</div>
+</div>  
+
+<h1>Novo Investidor</h1>
+
+<form class="new_investor" id="new_investor" action="/investors" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+
+  <div class="field">
+    <label for="investor_full_name">Full name</label><br>
+    <input type="text" name="investor[full_name]" id="investor_full_name" />
+  </div>
+  <div class="field">
+    <label for="investor_address">Address</label><br>
+    <input type="text" name="investor[address]" id="investor_address" />
+  </div>
+  <div class="field">
+    <label for="investor_zip_code">Zip code</label><br>
+    <input type="text" name="investor[zip_code]" id="investor_zip_code" />
+  </div>
+  <div class="field">
+    <label for="investor_town">Town</label><br>
+    <input type="text" name="investor[town]" id="investor_town" />
+  </div>
+  <div class="field">
+    <label for="investor_country">Country</label><br>
+    <input type="text" name="investor[country]" id="investor_country" />
+  </div>
+  <div class="field">
+    <label for="investor_fiscal_number">Fiscal number</label>
+    <input type="text" name="investor[fiscal_number]" id="investor_fiscal_number" />
+  </div>
+  <div class="actions">
+    <input type="submit" name="commit" value="Registar Investidor" />
+  </div>
+</form>
+
+<a href="/investors">Back</a>
+
+
+</body>
+</html>
