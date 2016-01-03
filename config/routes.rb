@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   
   resources :deals
-  resources :projects
+  
   get '/application/main_admin', :to => "application#main_admin", as: 'main_admin'
-  get '/account_movements/new_id/:id', :to => "account_movements#new_id", as: 'account_movements_id'
   get '/account_movements/list_investor/:id_investor', :to => "account_movements#list_investor", as: 'account_movements_list_investor'
   get 'investors/search'
   get '/entrepreneurs/main/:id', :to => "entrepreneurs#main", as: 'entrepreneur_main'
-  get '/projects/new_by_entrepreneur/:id_entrepreneur', :to => "projects#new_by_entrepreneur", as:"project_new_by_entrepreneur"
+  resources :projects
   get '/projects/index_investor/:id_investor', :to => "projects#index_investor", as:"index_investor"
   get '/deal/new_deal_investor_project/:id_investor/:id_project', :to => "deals#new_deal_investor_project", as:"new_deal_investor_project"
   get 'entrepreneurs/:user_id/new_by_user' => 'entrepreneurs#new_by_user', as: :entrepreneur_new_by_user
@@ -15,23 +14,18 @@ Rails.application.routes.draw do
   get 'investors/:user_id/new_by_user' => 'investors#new_by_user', as: :investor_new_by_user
   post 'investors/:user_id/create_by_user' => 'investors#create_by_user', as: :investor_create_by_user
 
-  resources :entrepreneurs
+
+  resources :entrepreneurs do
+    resources :projects
+  end
+  
   resources :account_movements
   resources :investors 
 
-  
-  
-  #authenticated :user do
-  #  root to: "devise/sessions#new", :as => "authenticated_root"
-  #end
   devise_scope :user do
     root to: "devise/sessions#new", :controllers => { registrations: 'registrations' }
   end
-  
-  #get 'home/index'
-  #devise_for :users
-  #root :to => "home#index"
-  
+
   #devise_for :users, :path_prefix => 'my' - comentado 22/11/2015 - implementação roles
   devise_for :users , :controllers => { registrations: 'registrations' }
   resources :users

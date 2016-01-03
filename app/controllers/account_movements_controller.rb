@@ -1,6 +1,6 @@
 class AccountMovementsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account_movement, only: [:show, :edit, :update, :destroy, :list_investor]
+  before_action :set_account_movement, only: [:show, :edit, :update, :destroy]
 
   # GET /account_movements
   # GET /account_movements.json
@@ -12,7 +12,6 @@ class AccountMovementsController < ApplicationController
   # GET /account_movements/1
   # GET /account_movements/1.json
   def show
-    byebug
     authorize @account_movement
   end
 
@@ -22,11 +21,6 @@ class AccountMovementsController < ApplicationController
     @account_movement = AccountMovement.new
   end
 
-  def new_id
-    @investor = Investor.find(params[:id])
-    @account_movement = AccountMovement.new
-    @account_movement.investor_id = @investor.id 
-  end
 
   # GET /account_movements/1/edit
   def edit
@@ -48,6 +42,8 @@ class AccountMovementsController < ApplicationController
       end
     end
   end
+
+
 
   # PATCH/PUT /account_movements/1
   # PATCH/PUT /account_movements/1.json

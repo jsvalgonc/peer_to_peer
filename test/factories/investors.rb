@@ -22,7 +22,7 @@ FactoryGirl.define do
   factory :user_lopes, class: User do
     email "jose.lopes@teste.com"
     role :investor
-    password "secretpass"
+    password "password"
   end
 
   factory :lopes, class: Investor do
@@ -46,7 +46,7 @@ FactoryGirl.define do
   factory :guedes, class: Entrepreneur do
     full_name "Jose Guedes"
     address "Rua do Lá Vai Um"
-    zip_code "1000"
+    zip_code "1000-000"
     town "Lisboa"
     country "Portugal"
     fiscal_number "12345678"
@@ -55,7 +55,7 @@ FactoryGirl.define do
   factory :entrepreneur do
     full_name "Jose Guedes"
     address "Rua do Lá Vai Um f2"
-    zip_code "1000"
+    zip_code "1000-000"
     town "Lisboa"
     country "Portugal"
     fiscal_number "12345678"

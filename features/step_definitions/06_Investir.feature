@@ -4,8 +4,10 @@ Feature: Investir - 6
   I want to choose a project 
 
 Scenario:Invest
-
+  Given there's a investor named "Antonio Silva" with user "a.silva@teste.com" 
   Given there's a movement of 1000 in "Antonio Silva" account
+  Given I am not authenticated 
+  Given I am authenticated as "a.silva@teste.com" with password "password"
   Given I am on the page Consultar Conta for "Antonio Silva"
   Then I should see "1000"
   Given there's a entrepreneur named "Jose Guedes" 

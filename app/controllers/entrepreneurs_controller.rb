@@ -1,6 +1,7 @@
 class EntrepreneursController < ApplicationController
   before_action :set_entrepreneur, only: [:show, :edit, :update, :destroy, :main]
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
+  respond_to :js, :html
   # GET /entrepreneurs
   # GET /entrepreneurs.json
   def index
@@ -22,6 +23,7 @@ class EntrepreneursController < ApplicationController
   def new
     authorize Entrepreneur
     @entrepreneur = Entrepreneur.new
+    byebug
   end
   
   
@@ -80,6 +82,30 @@ class EntrepreneursController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def new_project
+    @entrepreneur = Entrepreneur.find(params[:id])
+    @project = @entrepreneur.projects.build
+    respond_with(@project)
+  end
+
+
+  def create_project
+  #@entrepreneur = Entrepreneur.find(params[:id])
+  byebug
+  @entrepreneur = Entrepreneur.new(entrepreneur_params)
+  #@project = @entrepreneur.projects.build(params[:project])
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.json { render :show, status: :created, location: @project }
+      else
+        format.html { render :new_project}
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -89,6 +115,8 @@ class EntrepreneursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entrepreneur_params
-      params.require(:entrepreneur).permit(:full_name, :address, :zip_code, :town, :country, :fiscal_number, :user_id)
+      params.require(:entrepreneur).permit(:commit, :full_name, :address, :zip_code, :town, :country, :fiscal_number, :user_id,
+      :projects_attributes => [:id, :value, :description, :start_date, :duration, :entrepreneur_id, :status])
     end
+    
 end

@@ -6,13 +6,13 @@ class AccountMovementPolicy < ApplicationPolicy
   end
 
   def show?
-    byebug
     user.admin? || user.finance? || (user.investor? || Investor.find_by_user_id(user.id).id==record.id )
   end
 
   def create?
     user.admin? || user.finance? 
   end
+  
 
   def new?
     user.admin? || user.finance? 
@@ -50,7 +50,6 @@ class AccountMovementPolicy < ApplicationPolicy
       if user.admin?
         scope.all
       else
-        byebug
         investor=Investor.find_by_user_id(@user.id)
         @scope.where(investor_id: investor.id)
       end

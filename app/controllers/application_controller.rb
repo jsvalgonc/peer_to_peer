@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     when "entrepreneur"
         @entrepreneur=Entrepreneur.find_by_user_id(current_user.id)
         entrepreneur_path(@entrepreneur.id)
+    when "finance"
+        main_admin_path
     else
         destroy_user_session_path
     end

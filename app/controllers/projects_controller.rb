@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_filter :get_entrepreneur
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    #@projects = Project.all
+    @projects = @entrepreneur.projects
   end
   
   def index_investor
@@ -14,11 +16,20 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @project= @entrepreneur.projects.find(params[:id])
   end
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @entrepreneur = Entrepreneur.find(params[:entrepreneur_id])
+    @project = @entrepreneur.projects.build
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @project }
+    end
+    
+    #@project = Project.new
   end
   
   def new_by_entrepreneur
@@ -28,16 +39,18 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @project = @entrepreneur.projects.find(params[:id])
   end
 
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
-
+    #@project = Project.new(project_params)
+    @project = @entrepreneur.projects.build(project_params)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Projecto Registado com Sucesso.' }
+        #format.html { redirect_to @project, notice: 'Projecto Registado com Sucesso.' }
+        format.html { redirect_to entrepreneur_projects_url(@entrepreneur), notice: 'Projecto Registado com Sucesso.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -46,12 +59,14 @@ class ProjectsController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
+    @project = @entrepreneur.projects.build(params[:project])
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to entrepreneur_project_url(@entrepreneur), notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -63,9 +78,10 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    @project = @entrepreneur.projects.build(params[:project])
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to entrepreneur_project_url(@entrepreneur), notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -75,9 +91,14 @@ class ProjectsController < ApplicationController
     def set_project
       @project = Project.find(params[:id])
     end
+    
+    def get_entrepreneur
+      @entrepreneur = Entrepreneur.find(params[:entrepreneur_id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:value, :description, :start_date, :duration, :entrepreneur_id, :status)
+      #params.require(:project).permit(:commit, :value, :description, :start_date, :duration, :entrepreneur_id, :status, :entrepreneur_attributes =>[:id,:full_name, :address] )
+      params.require(:project).permit(:commit, :value, :description, :start_date, :duration, :entrepreneur_id, :status )
     end
 end

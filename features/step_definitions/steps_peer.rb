@@ -1,48 +1,19 @@
-Given /^I am on (.+)$/ do |page_name|
-  path_to_page_name = path_to(page_name)
-  visit path_to_page_name 
-  save_and_open_page
+### UTILITY METHODS ###
+def create_financial_manager
+  @user = FactoryGirl.create(:user_lopes, @visitor, :role => :finance)
 end
 
-When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
-  fill_in(field, :with => value)
-end
-
-
-When /^I select "([^"]*)" as the (.+) "([^"]*)" date$/ do |date, model, selector|
-  date = Date.parse(date)
-  select(date.year.to_s, :from => "#{model}[#{selector}(1i)]")
-  select(date.strftime("%B"), :from => "#{model}[#{selector}(2i)]")
-  select(date.day.to_s, :from => "#{model}[#{selector}(3i)]")
+  
+def sign_in
+  visit '/users/sign_in'
+  fill_in "user_email", :with => @user.email
+  fill_in "user_password", :with => @user.password
+  click_button "Entrar"
 end
 
 
 
-
-When /^In line "(.*?)" I press "(.*?)"$/ do |line,button|
-  find(:xpath, "//tr[contains(.,line)]/td/a", :text => button).click
-end
-
-When(/^I chosee "(.*?)" from drop box "(.*?)"$/) do |option, box|
-  select(option, :from => box)
-end
-
-When /^(?:|I )press "([^"]*)"$/ do |button|
-  click_button(button)
-end
-
-When /^(?:|I )choose button "([^"]*)"$/ do |option|
-  choose(option)
-end
-Then /^(?:|I )should see "([^"]*)"$/ do |text|
-  if page.respond_to? :should
-    page.should have_content(text)
-  else
-    assert page.has_content?(text)
-  end
-end
-
-
+### GIVEN ###
 Given /^I am a new, authenticated user$/ do
   email = 'testing@man.net'
   password = 'secretpass'
@@ -59,21 +30,13 @@ Given /^I am not authenticated$/ do
 end
 
 Given /^I am authenticated as a Financial Manager$/ do
-  email = 'testingFM@man.net'
-  password = 'secretpass'
-  role = :finance
-  User.new(:email => email, :password => password, :password_confirmation => password, :role => role).save!
-
-  visit 'sign_in'
-  fill_in "user_email", :with => email
-  fill_in "user_password", :with => password
-  click_button "Entrar"
+  create_financial_manager
+  sign_in
 end
 
 Given(/^there's a investor named "(.*?)" with user "(.*?)"$/) do |full_name, user|
-  #@investor = FactoryGirl.create(:investor, full_name: full_name, address: "Rua do Lá Vai Um, n.1, 456º Frente", zip_code: "1000-000",town: "Lisboa",country: "Portugal",fiscal_number: "12345678")
-  @user = User.find_by_email(user)
-  @investor = FactoryGirl.create(:lopes, user: @user)
+  @user = FactoryGirl.create(:user_lopes,:role => :investor, :email => user)  #@user = User.find_by_email(user)
+  @investor = FactoryGirl.create(:lopes, user: @user, full_name: full_name)
 end
 
 Given(/^there's a user named "(.*?)"$/) do |full_name|
@@ -87,11 +50,19 @@ Given(/^there's a movement of (\d+) in "(.*?)" account$/) do |value, investor|
   @account_movements = FactoryGirl.create(:account_movement, value: value, investor: @investor)
 end
 
-Given(/^I am authenticated as "(.*?)"$/) do |arg1|
-  email = 'jose.lopes@teste.com'
-  password = 'secretpass'
-  #role = :investor
-  #User.new(:email => email, :password => password, :password_confirmation => password, :role => role).save!
+#Given(/^I am authenticated as "(.*?)"$/) do |arg1|
+#  email = 'jose.lopes@teste.com'
+#  password = 'secretpass'
+#  #role = :investor
+#  #User.new(:email => email, :password => password, :password_confirmation => password, :role => role).save!
+#  visit 'sign_in'
+#  fill_in "user_email", :with => email
+#  fill_in "user_password", :with => password
+#  click_button "Entrar"
+#end
+
+
+Given(/^I am authenticated as "(.*?)" with password "(.*?)"$/) do |email, password|
   visit 'sign_in'
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
@@ -108,6 +79,56 @@ Given(/^there's a project named "(.*?)" by "(.*?)"$/) do |project, entrepreneur|
   @entrepreneur = FactoryGirl.create(:entrepreneur, full_name: entrepreneur)
   @project = FactoryGirl.create(:ArrumarCarros,description: project, entrepreneur: @entrepreneur)
 end
+
+
+Given /^I am on (.+)$/ do |page_name|
+  path_to_page_name = path_to(page_name)
+  visit path_to_page_name 
+end
+
+
+### WHEN ###
+
+When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  fill_in(field, :with => value)
+end
+
+
+When /^I select "([^"]*)" as the (.+) "([^"]*)" date$/ do |date, model, selector|
+  date = Date.parse(date)
+  select(date.year.to_s, :from => "#{model}[#{selector}(1i)]")
+  select(date.strftime("%B"), :from => "#{model}[#{selector}(2i)]")
+  select(date.day.to_s, :from => "#{model}[#{selector}(3i)]")
+end
+
+When /^In line "(.*?)" I press "(.*?)"$/ do |line,button|
+  find(:xpath, "//tr[contains(.,line)]/td/a", :text => button).click
+end
+
+When(/^I chosee "(.*?)" from drop box "(.*?)"$/) do |option, box|
+  select(option, :from => box)
+end
+
+When /^(?:|I )press "([^"]*)"$/ do |button|
+  click_button(button)
+end
+
+When /^(?:|I )choose button "([^"]*)"$/ do |option|
+  choose(option)
+end
+
+
+### THEN ###
+
+Then /^(?:|I )should see "([^"]*)"$/ do |text|
+  if page.respond_to? :should
+    page.should have_content(text)
+  else
+    assert page.has_content?(text)
+  end
+end
+
+
 
 
 World(NavigationHelpers)

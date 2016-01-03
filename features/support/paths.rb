@@ -11,7 +11,7 @@ module NavigationHelpers
         account_movements_list_investor_path(Investor.find_by_full_name($1))
     when /^the Selecionar Projecto for "(.*)"$/ then
         index_investor_path(Investor.find_by_full_name($1))
-    when /Projectos/ then 'projects'
+    when /Projectos/ then '/projects'
     #when /Consultar Conta/ then '/account_movements/list_investor/'
     else
       begin
