@@ -15,6 +15,15 @@ class InvestorsController < ApplicationController
     @investor = Investor.find(params[:id])
     authorize @investor
   end
+  
+    # GET /investors/1
+  # GET /investors/1.json
+  def main
+    @investor = Investor.find(params[:id])
+    authorize @investor
+    @deals_open = Deal.where("investor_id=" + params[:id].to_s + " and confirmed='t'")
+    @deals_pending = Deal.where("investor_id=" + params[:id].to_s + " and confirmed='f'")
+  end
 
   # GET /investors/new
   def new
@@ -41,10 +50,10 @@ class InvestorsController < ApplicationController
   def create
     authorize Investor
     @investor = Investor.new(investor_params)
-
+    byebug
     respond_to do |format|
       if @investor.save
-        format.html { redirect_to @investor, notice: 'Investor was successfully created.' }
+        format.html { redirect_to investor_main_path(@investor.id), notice: 'Investor was successfully created.' }
         format.json { render :show, status: :created, location: @investor }
       else
         format.html { render :new }
@@ -85,16 +94,6 @@ class InvestorsController < ApplicationController
   def search
     authorize Investor
     @investors = Investor.search(params[:search])
-  end
-  
-  def saldo
-    authorize Investor
-    saldo_investor = 0  
-    @account_movements=AccountMovement.where("investor_id=" + investor.id)
-    @account_movements.each do |account_movement|
-      saldo_investor = saldo_investor + account_movement.value
-    end
-    saldo_investor
   end
   
 

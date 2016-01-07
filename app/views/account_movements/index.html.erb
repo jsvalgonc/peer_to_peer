@@ -1,33 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Account Movements</h1>
+<h1>Listing Account Movements for investor </h1><% @investor.full_name %> 
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Value date</th>
-      <th>Movement date</th>
-      <th>Value</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @account_movements.each do |account_movement| %>
+<% if !@investor.account_movements.empty? %>
+  <table>
+    <thead>
       <tr>
-        <td><%= account_movement.investor.full_name %></td>
-        <td><%= account_movement.value_date %></td>
-        <td><%= account_movement.movement_date %></td>
-        <td><%= account_movement.value %></td>
-        <td><%= link_to 'Show', account_movement %></td>
-        <td><%= link_to 'Edit', edit_account_movement_path(account_movement) %></td>
-        <td><%= link_to 'Destroy', account_movement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>User</th>
+        <th>Value date</th>
+        <th>Movement date</th>
+        <th>Value</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </thead>
+  
+    <tbody>
+      <% @account_movements.each do |account_movement| %>
+        <tr>
+          <td><%= account_movement.investor.full_name %></td>
+          <td><%= account_movement.value_date %></td>
+          <td><%= account_movement.movement_date %></td>
+          <td><%= account_movement.value %></td>
+          <td><%= link_to 'Show', [@investor, account_movement] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+A Conta do investidor <% investor.full_name %> não tem movimentos
+<% end %>
 <br>
 
-<%= link_to 'New Account movement', new_account_movement_path %>
+<%= link_to 'New Account movement', new_investor_account_movement_path(@investor) %>

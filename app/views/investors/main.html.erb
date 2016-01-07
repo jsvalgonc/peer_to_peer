@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Investidor:</strong> <%= @investor.full_name %>
+</p>
+
+<table>
+  <tr>
+    <td>Valor Investido </td>
+    <td><%= number_to_currency(@investor.investido, :unit => "€") %></td>
+    <td>Saldo Conta</td>
+    <td><%= number_to_currency(@investor.saldo, :unit => "€") %></td>
+  </tr>
+  <tr>
+    <td>Juro Recebido</td>
+    <td><%= number_to_currency(@investor.juro_recebido, :unit => "€") %></td>
+    <td>Total Recebido</td>
+    <td><%= number_to_currency(@investor.recebido, :unit => "€") %></td>
+  </tr>
+</table>
+<br>
+<h2>Portfolio</h2>
+<h3>Actual</h3>
+<table>
+  <tr>
+    <td>Projecto</td>
+    <td>Total Actual</td>
+    <td>Total Investido</td>
+    <td>Juros Totais</td>
+  </tr>
+  <% @deals_open.each do |deals_open| %>
+    <tr>
+      <td><%= deals_open.project.description %></td>
+      <td><%= deals_open.value - deals_open.paid_capital %></td>
+      <td><%= deals_open.value %></td>
+      <td><%= deals_open.paid_interest %></td>
+    </tr>
+  <% end %>
+</table>
+<h3>Selecionados</h3>
+<table>
+  <tr>
+    <td>Projecto</td>
+    <td>Total Pretendido</td>
+  </tr>
+  <% @deals_pending.each do |deals_pending| %>
+    <tr>
+      <td><%= deals_pending.project.description %></td>
+      <td><%= deals_pending.value %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Conta Corrente', account_movements_list_investor_path(@investor) %> |
+<%= link_to 'Investir', index_investor_path(@investor) %> 

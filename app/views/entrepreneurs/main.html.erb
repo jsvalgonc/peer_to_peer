@@ -29,13 +29,13 @@
   <strong>Fiscal number:</strong>
   <%= @entrepreneur.fiscal_number %>
 </p>
+<br>
+<br>
 
-________________________
+<%= button_to 'Criar Projecto', new_entrepreneur_project_path(@entrepreneur), method: :get %>
 
-<%= button_to 'Criar Projecto', project_new_by_entrepreneur_path(@entrepreneur), method: :get %>
-___________________________
-
-
-
+<br>
+<br>
 <%= link_to 'Edit', edit_entrepreneur_path(@entrepreneur) %> |
-<%= link_to 'Back', entrepreneurs_path %>
+<%= link_to 'Back', entrepreneurs_path %> |
+<%= link_to 'Sign_out', destroy_user_session_path %></p>

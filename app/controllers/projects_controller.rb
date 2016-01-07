@@ -1,26 +1,32 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_filter :get_entrepreneur
+  before_filter :get_entrepreneur, only: [ :new, :new_by_entrepreneur, :create, :show, :update, :destroy]
+  before_action :authenticate_user!
+
 
   # GET /projects
   # GET /projects.json
   def index
-    #@projects = Project.all
-    @projects = @entrepreneur.projects
+    @projects = Project.all
+    #@projects = @entrepreneur.projects
+    authorize Project
   end
   
   def index_investor
     @projects = Project.all
+    authorize Project
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
     @project= @entrepreneur.projects.find(params[:id])
+    authorize @project
   end
 
   # GET /projects/new
   def new
+    authorize Project
     @entrepreneur = Entrepreneur.find(params[:entrepreneur_id])
     @project = @entrepreneur.projects.build
     
@@ -33,18 +39,22 @@ class ProjectsController < ApplicationController
   end
   
   def new_by_entrepreneur
+    authorize Project
     @project = Project.new
     @project.entrepreneur_id = params[:entrepreneur_id]
   end
 
   # GET /projects/1/edit
   def edit
-    @project = @entrepreneur.projects.find(params[:id])
+    @project = Project.find(params[:id])
+    @entrepreneur = @project.entrepreneur
+    authorize @project
   end
 
   # POST /projects
   # POST /projects.json
   def create
+    authorize Project
     #@project = Project.new(project_params)
     @project = @entrepreneur.projects.build(project_params)
     respond_to do |format|
@@ -63,10 +73,11 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    @project = @entrepreneur.projects.build(params[:project])
+    @project = @entrepreneur.projects.build(project_params)
+    authorize @project
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to entrepreneur_project_url(@entrepreneur), notice: 'Project was successfully updated.' }
+        format.html { redirect_to entrepreneur_projects_url(@entrepreneur), notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -79,6 +90,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     @project = @entrepreneur.projects.build(params[:project])
+    authorize @project
     @project.destroy
     respond_to do |format|
       format.html { redirect_to entrepreneur_project_url(@entrepreneur), notice: 'Project was successfully destroyed.' }

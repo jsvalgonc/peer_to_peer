@@ -90,6 +90,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:investor_id, :project_id, :value, :confirmed, :confirmation_date)
+      params.require(:deal).permit(:investor_id, :project_id, :value, :confirmed, :confirmation_date,  :paid_capital, :paid_interest, :accrued_interest)
     end
 end

@@ -67,11 +67,7 @@ bundle install
 
 ----------------Git-----------------------------------
 
-git init = inicializar
-git status
-git add * (-f) = adicionar ficheiros - quando se cria novos
-git commit -m "nome"
-git log (sair: q)
+
 
 no C9 
 
@@ -80,6 +76,8 @@ password:portugues e mumero
 
 criar git- git init
 criar remote - git remote add pd4mealplanner https://github.com/jsvalgonc/PD4.git
+
+
 adicionar ficheiros - git add --all (-f)
 commit - git commit -m 'added new files' (colocar o nome da versão)
 push - git push pd4mealplanner/peer_to_peer master
@@ -120,7 +118,7 @@ Escrever no log os parametros
     
 -------------------nested forms-----------------------------------------
 http://www.createdbypete.com/articles/working-with-nested-forms-and-a-many-to-many-association-in-rails-4/
-http://asciicasts.com/episodes/196-nested-model-form-part-1
+http://railscasts.com/episodes/196-nested-model-form-part-1
 https://css-tricks.com/how-to-create-a-notebook-design-with-css/
 http://railscasts.com/episodes/324-passing-data-to-javascript
 http://codepen.io/chriscoyier/pen/egHEK (tag)

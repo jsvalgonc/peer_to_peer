@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<%= form_tag investors_search_path, :method => 'get' do %>
+
+<%= form_tag investors_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Pesquisar", :name => nil %>
@@ -37,6 +38,7 @@
         <td><%= link_to 'Mostrar', investor %></td>
         <td><%= link_to 'Editar', edit_investor_path(investor) %></td>
         <td><%= link_to 'Apagar', investor, method: :delete, data: { confirm: 'Confirma?' } %></td>
+        <td><%= link_to 'Movimentar', new_investor_account_movement_path(investor) %></td>
       </tr>
     <% end %>
   </tbody>

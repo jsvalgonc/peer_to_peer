@@ -1,4 +1,6 @@
 class Entrepreneur < ActiveRecord::Base
+  belongs_to :user
+  
   validates :full_name, presence: true
   validates :address, presence: true
   validates :zip_code, presence: true

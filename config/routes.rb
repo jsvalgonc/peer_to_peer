@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   resources :deals
   
   get '/application/main_admin', :to => "application#main_admin", as: 'main_admin'
-  get '/account_movements/list_investor/:id_investor', :to => "account_movements#list_investor", as: 'account_movements_list_investor'
+  get '/account_movements/list_investor/:investor_id', :to => "account_movements#list_investor", as: 'account_movements_list_investor'
   get 'investors/search'
   get '/entrepreneurs/main/:id', :to => "entrepreneurs#main", as: 'entrepreneur_main'
+  get '/investors/:id/main', :to => "investors#main", as: 'investor_main'
   resources :projects
-  get '/projects/index_investor/:id_investor', :to => "projects#index_investor", as:"index_investor"
+  get '/projects/index_investor/:investor_id', :to => "projects#index_investor", as:"index_investor"
   get '/deal/new_deal_investor_project/:id_investor/:id_project', :to => "deals#new_deal_investor_project", as:"new_deal_investor_project"
   get 'entrepreneurs/:user_id/new_by_user' => 'entrepreneurs#new_by_user', as: :entrepreneur_new_by_user
   post 'entrepreneurs/:user_id/create_by_user' => 'entrepreneurs#create_by_user', as: :entrepreneur_create_by_user
@@ -19,9 +20,12 @@ Rails.application.routes.draw do
     resources :projects
   end
   
+  resources :investors do 
+    resources :account_movements
+  end
+  
   resources :account_movements
-  resources :investors 
-
+  
   devise_scope :user do
     root to: "devise/sessions#new", :controllers => { registrations: 'registrations' }
   end

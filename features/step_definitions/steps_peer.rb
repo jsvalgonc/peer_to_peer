@@ -69,9 +69,10 @@ Given(/^I am authenticated as "(.*?)" with password "(.*?)"$/) do |email, passwo
   click_button "Entrar"
 end
 
-Given(/^there's a entrepreneur named "(.*?)"$/) do |full_name|
-  #@investor = FactoryGirl.create(:investor, full_name: full_name, address: "Rua do Lá Vai Um, n.1, 456º Frente", zip_code: "1000-000",town: "Lisboa",country: "Portugal",fiscal_number: "12345678")
-  @investor = FactoryGirl.create(:guedes, full_name: full_name)
+
+Given(/^there's a entrepreneur named "(.*?)" with user "(.*?)"$/) do |full_name, user|
+  @user = FactoryGirl.create(:user_guedes,:role => :entrepreneur, :email => user)
+  @entrepreneur = FactoryGirl.create(:guedes,  user: @user, full_name: full_name)
 end
 
 Given(/^there's a project named "(.*?)" by "(.*?)"$/) do |project, entrepreneur|  #@investor = FactoryGirl.create(:investor, full_name: full_name, address: "Rua do Lá Vai Um, n.1, 456º Frente", zip_code: "1000-000",town: "Lisboa",country: "Portugal",fiscal_number: "12345678")

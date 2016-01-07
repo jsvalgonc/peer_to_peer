@@ -33,6 +33,35 @@ end
     saldo_investor
   end
 
+  def investido
+    # o valor investido inclui o valor pretendido de projecto que ainda não foram concluidos
+    investido = 0
+    @deals=Deal.where("investor_id=" + self.id.to_s)
+    @deals.each do |deal|
+      investido = investido + deal.value - deal.paid_capital
+    end
+    investido
+  end
     
+  def recebido
+    # o valor investido inclui o valor pretendido de projecto que ainda não foram concluidos
+    recebido = 0
+    @deals=Deal.where("investor_id=" + self.id.to_s)
+    @deals.each do |deal|
+      recebido = recebido + deal.paid_capital + deal.paid_interest
+    end
+    recebido
+  end
+
+  def juro_recebido
+    # o valor investido inclui o valor pretendido de projecto que ainda não foram concluidos
+    juro_recebido = 0
+    @deals=Deal.where("investor_id=" + self.id.to_s)
+    @deals.each do |deal|
+      juro_recebido = juro_recebido  + deal.paid_interest
+    end
+    juro_recebido
+  end
+
     
 end

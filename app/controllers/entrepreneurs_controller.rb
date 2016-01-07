@@ -23,7 +23,6 @@ class EntrepreneursController < ApplicationController
   def new
     authorize Entrepreneur
     @entrepreneur = Entrepreneur.new
-    byebug
   end
   
   
@@ -92,7 +91,6 @@ class EntrepreneursController < ApplicationController
 
   def create_project
   #@entrepreneur = Entrepreneur.find(params[:id])
-  byebug
   @entrepreneur = Entrepreneur.new(entrepreneur_params)
   #@project = @entrepreneur.projects.build(params[:project])
     respond_to do |format|

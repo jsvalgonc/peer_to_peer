@@ -2,7 +2,7 @@ class AccountMovementPolicy < ApplicationPolicy
   attr_reader :user, :record
   
   def index?
-    user.admin? || user.finance?
+    user.admin? || user.finance?|| user.investor?
   end
 
   def show?
@@ -10,12 +10,12 @@ class AccountMovementPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin? || user.finance? 
+    user.admin? || user.finance? || user.investor?
   end
   
 
   def new?
-    user.admin? || user.finance? 
+    user.admin? || user.finance? || user.investor?
   end
 
   def update?

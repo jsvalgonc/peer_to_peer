@@ -24,7 +24,7 @@
         <td><%= project.duration %></td>
         <td><%= project.description %></td>
         <td><%= project.status %></td>
-        <td><%= link_to 'Selecionar', new_deal_investor_project_path( id_investor: params[:id_investor],id_project: project.id) %></td>
+        <td><%= link_to 'Selecionar', new_deal_investor_project_path( id_investor: params[:investor_id],id_project: project.id) %></td>
       </tr>
     <% end %>
   </tbody>

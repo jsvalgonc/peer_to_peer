@@ -43,6 +43,14 @@ FactoryGirl.define do
     value 1
   end
 
+#Entrepreneur
+
+  factory :user_guedes, class: User do
+    email "jose.guedes@teste.com"
+    role :entrepreneur
+    password "password"
+  end
+
   factory :guedes, class: Entrepreneur do
     full_name "Jose Guedes"
     address "Rua do Lá Vai Um"
@@ -50,6 +58,7 @@ FactoryGirl.define do
     town "Lisboa"
     country "Portugal"
     fiscal_number "12345678"
+    association :user, factory: :user_guedes
   end
   
   factory :entrepreneur do

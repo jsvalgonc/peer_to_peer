@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209000725) do
+ActiveRecord::Schema.define(version: 20160107181810) do
 
   create_table "account_movements", force: :cascade do |t|
     t.date     "value_date"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 20151209000725) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "project_id"
+    t.integer  "paid_capital"
+    t.integer  "paid_interest"
+    t.integer  "accrued_interest"
   end
 
   add_index "deals", ["investor_id"], name: "index_deals_on_investor_id"

@@ -15,6 +15,10 @@ class InvestorPolicy < ApplicationPolicy
   def show?
     @user.admin? || @user.finance? || (@user.investor? && @investor.user_id == @user.id)
   end
+  
+  def main?
+    @user.admin? || @user.finance? || (@user.investor? && @investor.user_id == @user.id)
+  end
 
   def create?
     user.admin? || user.finance? || user.investor?
