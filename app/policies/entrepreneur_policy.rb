@@ -34,7 +34,6 @@ class EntrepreneurPolicy < ApplicationPolicy
   end
 
   def edit?
-    byebug
     @user.admin? || @user.finance? || (@user.entrepreneur? && @entrepreneur.user_id == @user.id)
   end
 
@@ -48,6 +47,10 @@ class EntrepreneurPolicy < ApplicationPolicy
   
   def search?
     user.admin? || user.finance?
+  end
+  
+  def main?
+    @user.admin? || @user.finance? || (@user.entrepreneur? && @entrepreneur.user_id == @user.id)
   end
   
 end

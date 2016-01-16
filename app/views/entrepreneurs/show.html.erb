@@ -1,33 +1,73 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Full name:</strong>
+  <strong><%= label_tag :full_name %></strong>
   <%= @entrepreneur.full_name %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong><%= label_tag :address %>:</strong>
   <%= @entrepreneur.address %>
 </p>
 
 <p>
-  <strong>Zip code:</strong>
+  <strong><%= label_tag :zip_code %>:</strong>
   <%= @entrepreneur.zip_code %>
 </p>
 
 <p>
-  <strong>Town:</strong>
+  <strong><%= label_tag :town %>:</strong>
   <%= @entrepreneur.town %>
 </p>
 
 <p>
-  <strong>Country:</strong>
+  <strong><%= label_tag :country %>:</strong>
   <%= @entrepreneur.country %>
 </p>
 
 <p>
-  <strong>Fiscal number:</strong>
+  <strong><%= label_tag :fiscal_number %>:</strong>
   <%= @entrepreneur.fiscal_number %>
+</p>
+
+<p>
+  <strong><%= label_tag :legal_nature %>:</strong>
+  <%= @entrepreneur.legal_nature %>
+</p>
+
+<p>
+  <strong><%= label_tag :phone_number %>:</strong>
+  <%= @entrepreneur.phone_number %>
+</p>
+<p>
+  <strong><%= label_tag :person_in_charge %>:</strong>
+  <%= @entrepreneur.person_in_charge %>
+</p>
+
+<p>
+  <strong><%= label_tag :main_activity %>:</strong>
+  <%= @entrepreneur.main_activity %>
+</p>
+
+<p>
+  <strong><%= label_tag :capital %>:</strong>
+  <%= @entrepreneur.capital %>
+</p>
+<p>
+  <strong><%= label_tag :star_year %>:</strong>
+  <%= @entrepreneur.start_year %>
+</p>
+<p>
+  <strong><%= label_tag :other_debt %>:</strong>
+  <%= @entrepreneur.other_debt %>
+</p>
+<p>
+  <strong><%= label_tag :other_costs %>:</strong>
+  <%= @entrepreneur.other_costs %>
+</p>
+<p>
+  <strong><%= label_tag :credit_delay %>:</strong>
+  <%= @entrepreneur.credit_delay %>
 </p>
 
 <%= link_to 'Edit', edit_entrepreneur_path(@entrepreneur) %> |

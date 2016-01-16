@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  enum status: [ :open, :close, :approved ]
+  enum status: [ :pending, :subscription, :open, :close ]
   after_initialize :set_default_status, :if => :new_record?
   validates :value, presence: true
   validates :start_date, presence: true
@@ -11,7 +11,8 @@ class Project < ActiveRecord::Base
   has_many :deals
   
   def set_default_status
-    self.status ||= :open
+    self.status ||= :pending
   end
+
 
 end

@@ -36,8 +36,45 @@
     <%= f.text_area :fiscal_number %>
   </div>
   <div class="field">
+    <%= f.label :legal_nature %><br>
+    <%= f.text_area :legal_nature %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_area :phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :person_in_charge %><br>
+    <%= f.text_area :person_in_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :main_activity %><br>
+    <%= f.text_area :main_activity %>
+  </div>  
+  <div class="field">
+    <%= f.label :capital %><br>
+    <%= f.text_area :capital %>
+  </div>  
+    <div class="field">
+    <%= f.label :start_year %><br>
+    <%= f.text_area :start_year %>
+  </div>
+  <div class="field">
+    <%= f.label :other_debt %><br>
+    <%= f.text_area :other_debt %>
+  </div>
+    <div class="field">
+    <%= f.label :other_costs %><br>
+    <%= f.text_area :other_costs %>
+  </div>
+  <div class="field">
+    <%= f.label :credit_delay %><br>
+    <%= f.check_box :credit_delay %>
+  </div>
+  <div class="field">
     <%= f.hidden_field :user_id %>
   </div>
+  
   <div class="actions">
     <%= f.submit "Registar Empreendedor"%>
   </div>

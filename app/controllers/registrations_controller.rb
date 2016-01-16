@@ -1,7 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   
     def after_sign_in_path_for(resource_or_scope)
-        byebug
         case current_user.role
         when "investor"
             investor_new_by_user_path(:user_id => @user.id)

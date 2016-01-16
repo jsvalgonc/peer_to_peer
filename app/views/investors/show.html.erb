@@ -1,41 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Full name:</strong>
+  <strong>Nome Completo:</strong>
   <%= @investor.full_name %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Morada:</strong>
   <%= @investor.address %>
 </p>
 
 <p>
-  <strong>Zip code:</strong>
+  <strong>Codigo Postal:</strong>
   <%= @investor.zip_code %>
 </p>
 
 <p>
-  <strong>Town:</strong>
+  <strong>Localidade:</strong>
   <%= @investor.town %>
 </p>
 
 <p>
-  <strong>Country:</strong>
+  <strong>Pais:</strong>
   <%= @investor.country %>
 </p>
 
 <p>
-  <strong>Nif:</strong>
+  <strong>NIF:</strong>
   <%= @investor.NIF %>
 </p>
 
-<p>
-  <strong>fiscal_number:</strong>
-  <%= @investor.fiscal_number %>
-</p>
-
 <%= link_to 'Conta Corrente', account_movements_list_investor_path(@investor) %> |
-<%= link_to 'Investir', index_investor_path(@investor) %> |
-<%= link_to 'Edit', edit_investor_path(@investor) %> |
-<%= link_to 'Back', investors_path %>
+<%= link_to 'Editar', edit_investor_path(@investor) %> |
+<%= link_to 'Voltar', investors_path %>

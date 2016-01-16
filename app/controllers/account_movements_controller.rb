@@ -42,7 +42,7 @@ class AccountMovementsController < ApplicationController
     #@account_movement = AccountMovement.new(account_movement_params)
     respond_to do |format|
       if @account_movement.save
-        format.html { redirect_to investor_account_movements_url(@investor), notice: 'Account movement was successfully created.' }
+        format.html { redirect_to account_movements_list_investor_path(@investor), notice: 'Account movement was successfully created.' }
         format.json { render :show, status: :created, location: @account_movement }
       else
         format.html { render :new }
@@ -60,7 +60,7 @@ class AccountMovementsController < ApplicationController
     @account_movement=@investor.account_movements.find(params[:id_])
     respond_to do |format|
       if @account_movement.update(account_movement_params)
-        format.html { redirect_to investor_account_movements_url(@investor), notice: 'Account movement was successfully updated.' }
+        format.html { redirect_to account_movements_list_investor_path(@investor), notice: 'Account movement was successfully updated.' }
         format.json { render :show, status: :ok, location: @account_movement }
       else
         format.html { render :edit }
@@ -96,7 +96,7 @@ class AccountMovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_movement_params
-      params.require(:account_movement).permit(:investor_id, :value_date, :movement_date, :value)
+      params.require(:account_movement).permit(:investor_id, :value_date, :movement_date, :value, :description, :movement_type)
     end
     
     def get_investor

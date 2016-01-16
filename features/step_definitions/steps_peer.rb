@@ -50,6 +50,11 @@ Given(/^there's a movement of (\d+) in "(.*?)" account$/) do |value, investor|
   @account_movements = FactoryGirl.create(:account_movement, value: value, investor: @investor)
 end
 
+Given(/^there's a parameter for "(.*?)" with value "(.*?)"$/) do |parameter, value|
+  @parameter=FactoryGirl.create(:app_parameter, parameter: "CurrentMonth",  value: "01-01-2016")
+end
+
+
 #Given(/^I am authenticated as "(.*?)"$/) do |arg1|
 #  email = 'jose.lopes@teste.com'
 #  password = 'secretpass'
@@ -118,6 +123,9 @@ When /^(?:|I )choose button "([^"]*)"$/ do |option|
   choose(option)
 end
 
+When /^I follow "(.*?)"$/ do |link|
+      click_link link
+end
 
 ### THEN ###
 

@@ -1,38 +1,91 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Full name:</strong>
-  <%= @entrepreneur.full_name %>
+  <strong>Entrepreneur: </strong> <%= @entrepreneur.full_name %>
 </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @entrepreneur.address %>
-</p>
-
-<p>
-  <strong>Zip code:</strong>
-  <%= @entrepreneur.zip_code %>
-</p>
-
-<p>
-  <strong>Town:</strong>
-  <%= @entrepreneur.town %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @entrepreneur.country %>
-</p>
-
-<p>
-  <strong>Fiscal number:</strong>
-  <%= @entrepreneur.fiscal_number %>
-</p>
+<table>
+  <tr>
+    <td>Total de Projectos Apresentados </td>
+    <td><%= number_to_currency(@entrepreneur.totalProjectsValue, :unit => "€") %></td>
+    <td>N.º de Projectos Apresentados</td>
+    <td><%= @entrepreneur.totalProjectsN %></td>
+  </tr>
+  <tr>
+    <td>Total Financiado</td>
+    <td><%= number_to_currency(@entrepreneur.financedProjectsValue, :unit => "€") %></td>
+    <td>N.º de Projectos Financiados</td>
+    <td><%= @entrepreneur.financedProjectsN %></td>
+  </tr>
+  <tr>
+    <td>Total a reembolsar(capital)</td>
+    <td><%= number_to_currency(@entrepreneur.openBalance, :unit => "€") %></td>
+    <td>N.º de projectos em reembolso</td>
+    <td><%= @entrepreneur.openProjectsN %></td>
+  </tr>
+</table>
 <br>
 <br>
+<h2>Portfolio</h2>
 
-<%= button_to 'Criar Projecto', new_entrepreneur_project_path(@entrepreneur), method: :get %>
+<h3>Em aprovação</h3>
+<table>
+  <tr>
+    <td>Projecto</td>
+    <td>Total Solicitado</td>
+  </tr>
+  <% @projects_pending.each do |project_pending| %>
+    <tr>
+      <td><%= project_pending.description %></td>
+      <td><%= project_pending.value %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Em subscrição</h3>
+<table>
+  <tr>
+    <td>Projecto</td>
+    <td>Total Solicitado</td>
+  </tr>
+  <% @projects_subscription.each do |project_subscription| %>
+    <tr>
+      <td><%= project_subscription.description %></td>
+      <td><%= project_subscription.value %></td>
+    </tr>
+  <% end %>
+</table>
+<h3>Em amortização</h3>
+<table>
+  <tr>
+    <td>Projecto</td>
+    <td>Total Financiado</td>
+    <td>Total em Divida</td>
+  </tr>
+  <% @projects_open.each do |project_open| %>
+    <tr>
+      <td><%= project_open.description %></td>
+      <td><%= project_open.value %></td>
+      <td><%= project_open.open_balance%></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<h3>Fechados</h3>
+<table>
+  <tr>
+    <td>Projecto</td>
+    <td>Total Solicitado</td>
+  </tr>
+  <% @projects_closed.each do |project_closed| %>
+    <tr>
+      <td><%= project_closed.description %></td>
+      <td><%= project_closed.value %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Criar Projecto', new_entrepreneur_project_path(@entrepreneur), method: :get %>
 
 <br>
 <br>

@@ -8,7 +8,7 @@ Scenario:Register Project
   Given I am not authenticated 
   Given I am authenticated as "maria.guedes@teste.com" with password "password"
   Given I am on the main entrepreneur page for "Maria Guedes" 
-  When  I press "Criar Projecto"
+  When I follow "Criar Projecto"
   Then I should see "Novo Projecto"
   When I fill in "project_value" with "1000000"
   When I fill in "project_description" with "Arrumar carros"

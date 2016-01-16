@@ -17,6 +17,12 @@ class EntrepreneursController < ApplicationController
   end
   
   def main
+    @entrepreneur = Entrepreneur.find(params[:id])
+    authorize @entrepreneur
+    @projects_pending = Project.where("entrepreneur_id=" + params[:id].to_s + " and status=0")
+    @projects_subscription = Project.where("entrepreneur_id=" + params[:id].to_s + " and status=1")
+    @projects_open = Project.where("entrepreneur_id=" + params[:id].to_s + " and status=2")
+    @projects_closed = Project.where("entrepreneur_id=" + params[:id].to_s + " and status=3")
   end
 
   # GET /entrepreneurs/new

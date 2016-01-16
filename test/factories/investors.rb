@@ -75,7 +75,14 @@ FactoryGirl.define do
     value 1000
     description "Arrumar Carros"
     start_date Time.now
-    duration 48
+    duration 36
+    interest_rate 0.12
+    status :subscription
+  end
+  
+  factory :app_parameter do
+    parameter "CurrentMonth"
+    value "01-01-2016"
   end
 
 end

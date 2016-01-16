@@ -29,10 +29,20 @@
     <%= f.label :value %><br>
     <%= f.text_field :value %>
   </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+    <div class="field">
+    <%= f.label :movement_type %><br>
+    <%= f.select(:movement_type, AccountMovement.movement_types.keys.map {|movement_type| [movement_type.titleize,movement_type]}) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Registar" %>
   </div>
+  
 <% end %>
 
-<%= link_to 'Back', account_movements_path %>
+<%= link_to 'Voltar', account_movements_path %>
 

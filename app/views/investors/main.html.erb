@@ -46,7 +46,7 @@
   <% @deals_pending.each do |deals_pending| %>
     <tr>
       <td><%= deals_pending.project.description %></td>
-      <td><%= deals_pending.value %></td>
+      <td><%= number_to_currency(deals_pending.value, :unit => "€")%></td>
     </tr>
   <% end %>
 </table>

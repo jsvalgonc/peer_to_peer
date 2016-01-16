@@ -9,7 +9,7 @@ Scenario:Invest
   Given I am not authenticated 
   Given I am authenticated as "a.silva@teste.com" with password "password"
   Given I am on the page Consultar Conta for "Antonio Silva"
-  Then I should see "1000"
+  Then I should see "€1,000.00"
   Given there's a entrepreneur named "Jose Guedes" with user "jose.guedes@teste.com" 
   Given there's a project named "Arrumar Carros" by "Jose Guedes"
   Given I am not authenticated 

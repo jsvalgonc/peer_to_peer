@@ -28,8 +28,14 @@
     <%= f.number_field :duration %>
   </div>
     <div class="field">
-    <%= f.label :status %><br>
-    <%= f.select(:status, Project.statuses.keys.map {|status| [status.titleize,status]}) %>
+    <%= f.label :interest_rate %><br>
+    <%= f.number_field :interest_rate %>
+  </div>
+    <%=  f.hidden_field :status %>
+  </div>
+  <div class="field">
+      <%= f.label :status %><br>
+      <%= f.select(:status, Project.statuses.keys.map {|status| [status.titleize,status]}) %>
   </div>
   <div class="actions">
     <%= f.submit "Registar Projecto"%>

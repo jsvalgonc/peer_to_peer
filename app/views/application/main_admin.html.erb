@@ -1,4 +1,5 @@
-<h1>Application#MainAdmin</h1>
+<h1>Peer-To-Peer Loans</h1>
+<h2>Gestão da Aplicação</h2>
 
 <h2>Projectos</h2>
 <p><%= link_to 'Projectos', projects_path %></p>
@@ -8,6 +9,10 @@
 <p><%= link_to 'Investidores', investors_path %></p>
 <h2>Empreendedores</h2>
 <p><%= link_to 'Empreendedores', entrepreneurs_path %></p>
+<h2>Processos</h2>
+Mês Actual=<%= @current_month %> <%= link_to 'Fechar Mês', admin_close_month_path %></p>
 
-<p><%= link_to 'Sign_in', user_session_path %></p>
-<p><%= link_to 'Sign_out', destroy_user_session_path %></p>
+
+
+
+

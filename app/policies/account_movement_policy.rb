@@ -47,7 +47,7 @@ class AccountMovementPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user.admin?
+      if user.admin?||user.finance?
         scope.all
       else
         investor=Investor.find_by_user_id(@user.id)

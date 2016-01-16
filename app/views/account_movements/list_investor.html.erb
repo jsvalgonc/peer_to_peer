@@ -1,28 +1,43 @@
 <p id="notice"><%= notice %></p>
-<h1>Listing Account Movements</h1>
+<h1>Conta Corrente</h1>
 <p></p>
-  <th>Investor</th>
-  <td><%= params[:id_investor] %></td>
+  <strong>Investor</strong>
+  <%=  @account_movements.any? ? @account_movements[0].investor.full_name : ''%>
 <p></p>
 <table>
   <thead>
     <tr>
-      <th>Value date</th>
-      <th>Movement date</th>
-      <th>Value</th>
+      <th>Data de Movimento</th></th>
+      <th>Data Valor</th>
+      <th>Descrição</th>
+      <th>Tipo de Movimento</th>
+      <th>Debito</th>
+      <th>Credito</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+    <% saldo = 0 %>
     <% @account_movements.each do |account_movement| %>
       <tr>
-        <td><%= account_movement.value_date %></td>
         <td><%= account_movement.movement_date %></td>
-        <td><%= account_movement.value %></td>
+        <td><%= account_movement.value_date %></td>
+        <td><%= account_movement.description %></td>
+        <td><%= account_movement.movement_type %></td>
+        <td><%= account_movement.value<0?number_to_currency(-account_movement.value, :unit => "€"):''%></td>
+        <td><%= account_movement.value>0?number_to_currency(account_movement.value, :unit => "€"):''%></td>
+        <% saldo = saldo + account_movement.value %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<table>
+  <tr>
+    <td><strong>Saldo</strong></td>
+    <td><strong><%= number_to_currency(saldo, :unit => "€") %></strong></td>
+  </tr>
+  
+</table>
 <br>

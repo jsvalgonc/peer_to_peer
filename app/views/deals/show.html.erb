@@ -1,31 +1,30 @@
 <p id="notice"><%= notice %></p>
 Interesse Registado
 <p>
-  <strong>Investor:</strong>
+  <strong>Investidor:</strong>
   <%= @deal.investor.full_name %>
 </p>
 
 <p>
-  <strong>Project:</strong>
+  <strong>Projecto:</strong>
   <%= @deal.project.description %>
 </p><p>
-  <strong>Value:</strong>
+  <strong>Valor</strong>
   <%= @deal.value %>
 </p>
 <p>
-  <strong>Confirmed:</strong>
+  <strong>Confirmado:</strong>
   <%= @deal.confirmed %>
 </p>
 
 <p>
-  <strong>Confirmation date:</strong>
+  <strong>Data de Confirmação:</strong>
   <%= @deal.confirmation_date %>
 </p>
 
 <p>
   <strong>Saldo:</strong>
-  <%= @deal.investor.saldo %>
+  <%= number_to_currency(@deal.investor.saldo, :unit => "€")  %>
 </p>
 
-<%= link_to 'Edit', edit_deal_path(@deal) %> |
-<%= link_to 'Back', deals_path %>
+<%= link_to 'Principal', investor_main_path(@deal.investor) %> |

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   
+  resources :installments
+  resources :installments
   resources :deals
   
+  get '/application/close_month' => "application#close_month", as: 'admin_close_month'  
   get '/application/main_admin', :to => "application#main_admin", as: 'main_admin'
   get '/account_movements/list_investor/:investor_id', :to => "account_movements#list_investor", as: 'account_movements_list_investor'
   get 'investors/search'

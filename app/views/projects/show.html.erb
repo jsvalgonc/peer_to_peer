@@ -1,28 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Value:</strong>
-  <%= @project.value %>
-</p>
-
-<p>
-  <strong>Description:</strong>
+  <strong>Descrição:</strong>
   <%= @project.description %>
 </p>
 
 <p>
-  <strong>Start date:</strong>
+  <strong>Valor:</strong>
+  <%= @project.value %>
+</p>
+
+<p>
+  <strong>Data Inicio:</strong>
   <%= @project.start_date %>
 </p>
 
 <p>
-  <strong>Duration:</strong>
+  <strong>Duração:</strong>
   <%= @project.duration %>
 </p>
 
 <p>
   <strong>Entrepreneur:</strong>
-  <%= @project.entrepreneur %>
+  <%= @project.entrepreneur.full_name %>
 </p>
 
 <p>
@@ -30,5 +30,5 @@
   <%= @project.status %>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Editar', edit_project_path(@project) %> |
+<%= link_to 'Voltar', projects_path %>

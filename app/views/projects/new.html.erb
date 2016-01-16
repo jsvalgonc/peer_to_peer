@@ -1,5 +1,41 @@
 <h1>Novo Projecto</h1>
 
-<%= render 'form' %>
+<%= form_for([@entrepreneur, @project]) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-<%= link_to 'Back', projects_path %>
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.number_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration %>
+  </div>
+    <div class="field">
+    <%= f.label :interest_rate %><br>
+    <%= f.number_field :interest_rate , :step => 'any'%>
+  </div>
+    <%=  f.hidden_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Registar Projecto"%>
+  </div>
+<% end %>

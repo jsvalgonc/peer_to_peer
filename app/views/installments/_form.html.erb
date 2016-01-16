@@ -1,0 +1,45 @@
+<%= form_for(@installment) do |f| %>
+  <% if @installment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@installment.errors.count, "error") %> prohibited this installment from being saved:</h2>
+
+      <ul>
+      <% @installment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :project_id %><br>
+    <%= f.text_field :project_id %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :reference_date %><br>
+    <%= f.date_select :reference_date %>
+  </div>
+  <div class="field">
+    <%= f.label :interest %><br>
+    <%= f.text_field :interest %>
+  </div>
+  <div class="field">
+    <%= f.label :capital %><br>
+    <%= f.text_field :capital %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.number_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :process_number %><br>
+    <%= f.number_field :process_number %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

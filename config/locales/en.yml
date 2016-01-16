@@ -21,3 +21,48 @@
 
 en:
   hello: "Hello world"
+  
+  activerecord:
+    models:
+      entrepreneur: Entrepreneur
+      project: Projecto
+      deal: Deal
+    attributes:
+      entrepreneur:
+        full_name: "Designação Social"
+        address: "Morada" 
+        zip_code: "Codigo Postal"
+        town: "Localidade"
+        country: "Pais"
+        fiscal_number: "Numero de Contribuiente"
+        legal_nature: "Natureza Juridica"
+        phone_number: "Número de Telefone"
+        person_in_charge: "Responsável a contactar"
+        main_activity: "Principal Actividade"
+        capital: "Capital Social"
+        start_year: "Ano de inicio de actividade"
+        other_debt: "Outras Responsabilidades"
+        other_costs: "Outros Encargos Financeiros"
+        credit_delay: "Incumprimento no Banco de Portugal"
+      project:
+        value: "Valor"
+        description: "Descrição"
+        start_date: "Data Inicio"
+        duration: "Duração (meses)"
+        status:  "Status"
+      deal:
+        value: "Valor" 
+        confirmed: "Confirmado" 
+        confirmation_date: "Data de Confirmação"
+        paid_capital: "Capital Pago"
+        paid_interest: "Juro Pago"
+        accrued_interest: "Juro Corrido"
+      account_movement:
+        value_date: "Data Valor"
+        movement_date: "Data de Movimento"
+        value: "Valor"
+        description: "Descrição"
+        movement_type: "Tipo de Movimento"
+      
+      
+ 

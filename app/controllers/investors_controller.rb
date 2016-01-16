@@ -23,6 +23,7 @@ class InvestorsController < ApplicationController
     authorize @investor
     @deals_open = Deal.where("investor_id=" + params[:id].to_s + " and confirmed='t'")
     @deals_pending = Deal.where("investor_id=" + params[:id].to_s + " and confirmed='f'")
+    #@deals_pending = Deal.where(investor_id: params[:id].to_s and confirmed: 'f')
   end
 
   # GET /investors/new
@@ -50,7 +51,6 @@ class InvestorsController < ApplicationController
   def create
     authorize Investor
     @investor = Investor.new(investor_params)
-    byebug
     respond_to do |format|
       if @investor.save
         format.html { redirect_to investor_main_path(@investor.id), notice: 'Investor was successfully created.' }

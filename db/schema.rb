@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107181810) do
+ActiveRecord::Schema.define(version: 20160115234810) do
 
   create_table "account_movements", force: :cascade do |t|
     t.date     "value_date"
@@ -20,25 +20,33 @@ ActiveRecord::Schema.define(version: 20160107181810) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "investor_id"
+    t.text     "description"
+    t.integer  "status"
+    t.integer  "movement_type"
   end
 
   add_index "account_movements", ["investor_id"], name: "index_account_movements_on_investor_id"
+
+  create_table "app_parameters", force: :cascade do |t|
+    t.string   "parameter"
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "deals", force: :cascade do |t|
     t.integer  "investor_id"
     t.integer  "value"
     t.boolean  "confirmed"
     t.date     "confirmation_date"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "project_id"
-    t.integer  "paid_capital"
-    t.integer  "paid_interest"
-    t.integer  "accrued_interest"
+    t.integer  "paid_capital",      default: 0
+    t.integer  "paid_interest",     default: 0
+    t.integer  "accrued_interest",  default: 0
+    t.integer  "status"
   end
-
-  add_index "deals", ["investor_id"], name: "index_deals_on_investor_id"
-  add_index "deals", ["project_id"], name: "index_deals_on_project_id"
 
   create_table "entrepreneurs", force: :cascade do |t|
     t.text     "full_name"
@@ -47,10 +55,33 @@ ActiveRecord::Schema.define(version: 20160107181810) do
     t.text     "town"
     t.text     "country"
     t.text     "fiscal_number"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
+    t.integer  "legal_nature"
+    t.text     "phone_number"
+    t.text     "person_in_charge"
+    t.text     "main_activity"
+    t.text     "capital"
+    t.integer  "start_year"
+    t.integer  "other_debt"
+    t.integer  "other_costs"
+    t.boolean  "credit_delay"
   end
+
+  create_table "installments", force: :cascade do |t|
+    t.integer  "project_id"
+    t.decimal  "value"
+    t.date     "reference_date"
+    t.decimal  "interest"
+    t.decimal  "capital"
+    t.integer  "status"
+    t.integer  "process_number"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "installments", ["project_id"], name: "index_installments_on_project_id"
 
   create_table "investors", force: :cascade do |t|
     t.string   "full_name"
@@ -71,12 +102,29 @@ ActiveRecord::Schema.define(version: 20160107181810) do
     t.date     "start_date"
     t.integer  "duration"
     t.integer  "entrepreneur_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "status"
+    t.float    "open_balance",    default: 0.0
+    t.float    "interest_rate"
+    t.float    "installment"
+    t.datetime "end_date"
   end
 
   add_index "projects", ["entrepreneur_id"], name: "index_projects_on_entrepreneur_id"
+
+  create_table "temp", force: :cascade do |t|
+    t.integer  "investor_id"
+    t.integer  "value"
+    t.boolean  "confirmed"
+    t.date     "confirmation_date"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "project_id"
+    t.integer  "paid_capital"
+    t.integer  "paid_interest"
+    t.integer  "accrued_interest"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
