@@ -13,6 +13,7 @@ module NavigationHelpers
         index_investor_path(Investor.find_by_full_name($1))
     when /Projectos/ then '/projects'
     when /main page for a manager/ then '/application/main_admin'
+    when /"Convite para registo" with envitation "(.*)"$/ then '/users/sign_up/' + $1
     #when /Consultar Conta/ then '/account_movements/list_investor/'
     else
       begin

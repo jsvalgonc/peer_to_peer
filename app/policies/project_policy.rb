@@ -18,7 +18,7 @@ class ProjectPolicy < ApplicationPolicy
 
   
   def show?
-    @user.admin? || @user.finance? || (@user.entrepreneur? && @entrepreneur.id == @project.entrepreneur_id)
+     user.admin? || user.finance? || (user.entrepreneur? &&  Entrepreneur.find_by_user_id(@user.id).id == @project.entrepreneur_id)
   end
 
   def create?
@@ -30,11 +30,11 @@ class ProjectPolicy < ApplicationPolicy
   end
   
   def update?
-    user.admin? || user.finance? || (@user.entrepreneur? && @entrepreneur.id == @project.entrepreneur_id)
+    user.admin? || user.finance? || (@user.entrepreneur? && Entrepreneur.find_by_user_id(@user.id).id == @project.entrepreneur_id)
   end
 
   def edit?
-    @user.admin? || @user.finance? || (@user.entrepreneur? && @entrepreneur.id == @project.entrepreneur_id)
+    @user.admin? || @user.finance? || (@user.entrepreneur? && Entrepreneur.find_by_user_id(@user.id).id == @project.entrepreneur_id)
   end
 
   def destroy?

@@ -3,10 +3,16 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   has_many :investors
   has_many :entrepreneurs
+  has_many :invitations
 
   def set_default_role
     self.role ||= :user
   end
+  
+  def set_default_agent
+    self.agent ||= :false
+  end
+  
   
   def admin?
     self.role == "admin" ? true : false

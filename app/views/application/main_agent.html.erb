@@ -1,0 +1,74 @@
+<h1>Peer-To-Peer Loans</h1>
+<h2>Agente-Página Principal</h2>
+<br>
+<br>
+<h2>Convites</h2>
+<b>Convites a enviar</b>
+<table>
+  <thead>
+    <tr>
+      <th>email</th>
+      <th> </th>
+      <th>chave</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invitations_unsend.each do |invitation| %>
+        <%= form_for(invitation , :url => {:controller =>"invitations",:action => "send_mail", :method => "post"}   ) do |f| %>
+          <tr>
+            <%= f.hidden_field :id %>
+            <td> <%= f.text_field :email %></td>
+            <td><%= f.submit 'Convidar', :class => 'button-xs' %></td>
+            <td><%= invitation.inv_key %></td>
+          </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+<b>Convites enviados</b> 
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>email</th>
+      <th>chave</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invitations_send.each do |invitation| %>
+        <tr>
+          <td> <%= invitation.email %></td>
+          <td><%= invitation.inv_key %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<b>Convites respondidos</b>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>email</th>
+      <th>chave</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invitations_answered.each do |invitation| %>
+        <tr>
+          <td> <%= invitation.email %></td>
+          <td><%= invitation.inv_key %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<h2>Investidor</h2>
+<%= link_to 'Página Principal de Investidor', investor_main_path(Investor.find_by_user_id(current_user)) %></p>
+<br>
+
+
+
+

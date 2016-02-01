@@ -14,6 +14,7 @@ Scenario:Register Project
   When I fill in "project_description" with "Arrumar carros"
   When I select "01/01/2015" as the project "start_date" date
   When I fill in "project_duration" with "48"
+  When I fill in "project_interest_rate" with "0.1"
   When I press "Registar Projecto" 
   Then I should see "Projecto Registado"
   

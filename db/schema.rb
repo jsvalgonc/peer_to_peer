@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115234810) do
+ActiveRecord::Schema.define(version: 20160128003611) do
 
   create_table "account_movements", force: :cascade do |t|
     t.date     "value_date"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160115234810) do
     t.integer  "other_debt"
     t.integer  "other_costs"
     t.boolean  "credit_delay"
+    t.text     "IBAN"
   end
 
   create_table "installments", force: :cascade do |t|
@@ -95,6 +96,20 @@ ActiveRecord::Schema.define(version: 20160115234810) do
     t.string   "fiscal_number"
     t.integer  "user_id"
   end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "inv_key"
+    t.date     "used_date"
+    t.boolean  "used"
+    t.text     "email"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "registered"
+    t.integer  "UserCreated"
+  end
+
+  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.integer  "value"
@@ -140,6 +155,7 @@ ActiveRecord::Schema.define(version: 20160115234810) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "role"
+    t.boolean  "agent"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

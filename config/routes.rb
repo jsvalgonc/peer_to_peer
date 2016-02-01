@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   
   get '/application/close_month' => "application#close_month", as: 'admin_close_month'  
   get '/application/main_admin', :to => "application#main_admin", as: 'main_admin'
+  get '/aplication/teste_write_file', :to => "application#test_write_file", as: 'test_write_file'
   get '/account_movements/list_investor/:investor_id', :to => "account_movements#list_investor", as: 'account_movements_list_investor'
   get 'investors/search'
   get '/entrepreneurs/main/:id', :to => "entrepreneurs#main", as: 'entrepreneur_main'
   get '/investors/:id/main', :to => "investors#main", as: 'investor_main'
+  get '/aplication/:id/main_agent', :to => "application#main_agent", as: 'agent_main'
+  patch '/invitations/:id/send_mail', :to => "invitations#send_mail", as: 'send_mail'
   resources :projects
   get '/projects/index_investor/:investor_id', :to => "projects#index_investor", as:"index_investor"
   get '/deal/new_deal_investor_project/:id_investor/:id_project', :to => "deals#new_deal_investor_project", as:"new_deal_investor_project"
@@ -28,14 +31,25 @@ Rails.application.routes.draw do
   end
   
   resources :account_movements
+
+  devise_scope :user do
+    get 'users/sign_up/:inv_key' => 'registrations#new' 
+    post 'users/sign_up/:inv_key' => 'registrations#create'
+  end
   
   devise_scope :user do
     root to: "devise/sessions#new", :controllers => { registrations: 'registrations' }
   end
-
-  #devise_for :users, :path_prefix => 'my' - comentado 22/11/2015 - implementação roles
+  #cria root_path	GET	/	devise/sessions#new {:controllers=>{:registrations=>"registrations"}
+  
   devise_for :users , :controllers => { registrations: 'registrations' }
+  # cria routes para sessions/password/registrations
+  
+  get 'users/index_agents' => 'users#index_agents', as: :users_agents
+  post 'users/index_agents/:id' => 'users#index_agents', as: :generate_invitations
+
   resources :users
+  # cria routes para gerir os utilizadores
   #JG 21/11/2015
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -26,6 +26,7 @@
     <%= f.radio_button :role, 'entrepreneur' %> Empreendedor<br />
   </p>
     <br>
+  <%= hidden_field_tag 'inv_key', params[:inv_key] %>
   <div class="actions">
     <%= f.submit "Registar"%>
   </div>

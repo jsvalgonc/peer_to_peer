@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @invitation.user %>
+</p>
+
+<p>
+  <strong>Inv key:</strong>
+  <%= @invitation.inv_key %>
+</p>
+
+<p>
+  <strong>Used date:</strong>
+  <%= @invitation.used_date %>
+</p>
+
+<p>
+  <strong>Used:</strong>
+  <%= @invitation.used %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @invitation.email %>
+</p>
+
+<%= link_to 'Edit', edit_invitation_path(@invitation) %> |
+<%= link_to 'Back', invitations_path %>

@@ -36,7 +36,7 @@ rake db:test:clone - sicronizar bases de dados
 
 Acrescentar um campo : rails generate migration AddReceitumIdToReceitaIngredientes  receitum_id:integer 
 
-Criar uma tabela de ligação: Rails generate scaffold IngredientsRecipes recipe:references ingredient:reference
+Criar uma tabela de ligação: rails generate scaffold IngredientsRecipes recipe:references ingredient:reference
 
 Apaga um campo: rails generate migration RemoveFieldNameFromTableName field_name:datatype
 
@@ -81,6 +81,11 @@ criar remote - git remote add pd4mealplanner https://github.com/jsvalgonc/PD4.gi
 adicionar ficheiros - git add --all (-f)
 commit - git commit -m 'added new files' (colocar o nome da versão)
 push - git push pd4mealplanner/peer_to_peer master
+
+-----------------Mails-------------------------------------
+
+rails generate mailer InvitationMailer - criar mailer
+
 
 ------------------Testes------------------------------------
 

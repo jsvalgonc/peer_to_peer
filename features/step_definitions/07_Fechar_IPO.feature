@@ -4,7 +4,7 @@ Feature: Fechar IPO - 7
   I want to close an IPO 
 
 Scenario:Invest
-
+  Given there's a parameter for "CurrentMonth" with value "01-01-2016"
   Given there's a entrepreneur named "Maria Guedes" with user "maria.guedes@teste.com"
   Given there's a project named "Arrumar Carros" by "Maria Guedes"
   Given I am not authenticated 

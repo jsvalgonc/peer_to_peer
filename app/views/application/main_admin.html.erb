@@ -9,9 +9,13 @@
 <p><%= link_to 'Investidores', investors_path %></p>
 <h2>Empreendedores</h2>
 <p><%= link_to 'Empreendedores', entrepreneurs_path %></p>
+<h2>Agentes</h2>
+<p><%= link_to 'Agentes', users_agents_path %></p>
 <h2>Processos</h2>
 Mês Actual=<%= @current_month %> <%= link_to 'Fechar Mês', admin_close_month_path %></p>
-
+<h2>Gerar Ficheiro</h2>
+<%= link_to 'Gerar Ficheiro de Cobranças', test_write_file_path %></p>
+<br>
 
 
 

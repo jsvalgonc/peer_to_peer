@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_filter :get_entrepreneur, only: [ :new, :new_by_entrepreneur, :create, :update]
   before_action :authenticate_user!
+  before_filter :get_entrepreneur, only: [ :new, :new_by_entrepreneur, :create, :update, :show, :edit]
+ 
 
 
   # GET /projects
@@ -39,6 +40,7 @@ class ProjectsController < ApplicationController
   end
   
   def new_by_entrepreneur
+    byebug
     authorize Project
     @project = Project.new
     @project.entrepreneur_id = params[:entrepreneur_id]
@@ -63,6 +65,7 @@ class ProjectsController < ApplicationController
     taxa_mensal= @project.interest_rate/12
     @project.installment = @project.value/((1-(1/(1+taxa_mensal)**@project.duration))/taxa_mensal)
     @project.end_date = @project.start_date + (@project.duration).months
+    @project.open_balance=@project.value
     respond_to do |format|
       if @project.save
         #format.html { redirect_to @project, notice: 'Projecto Registado com Sucesso.' }
@@ -79,12 +82,14 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-    @project = @entrepreneur.projects.find(params[:id])
+    @project = Project.find(params[:id])
+    #@project = @entrepreneur.projects.find(params[:id])
     taxa_mensal= @project.interest_rate/12
     @project.installment = @project.value/((1-(1/(1+taxa_mensal)**@project.duration))/taxa_mensal)
     @project.end_date = @project.start_date + (@project.duration).months
     #@project = @entrepreneur.projects.build(project_params)
     authorize @project
+    @project.open_balance=@project.value
     if @project.status = :open
       deals = @project.deals
       deals.each do |deal|
@@ -93,7 +98,9 @@ class ProjectsController < ApplicationController
     end
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to entrepreneur_projects_url(@entrepreneur), notice: 'Project was successfully updated.' }
+        #format.html { redirect_to entrepreneur_projects_url(@entrepreneur), notice: 'Project was successfully updated.' }
+        root_path
+        format.html { redirect_to edit_project_path(@project), notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -122,12 +129,14 @@ class ProjectsController < ApplicationController
     end
     
     def get_entrepreneur
-      @entrepreneur = Entrepreneur.find(params[:entrepreneur_id])
+      if current_user.entrepreneur? then
+        @entrepreneur = Entrepreneur.find_by_user_id(current_user.id)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       #params.require(:project).permit(:commit, :value, :description, :start_date, :duration, :entrepreneur_id, :status, :entrepreneur_attributes =>[:id,:full_name, :address] )
-      params.require(:project).permit(:commit, :value, :description, :start_date, :duration, :entrepreneur_id, :status, :interest_rate, :end_date )
+      params.require(:project).permit(:commit, :value, :description, :start_date, :duration, :entrepreneur_id, :status, :interest_rate, :end_date, :user_id )
     end
 end

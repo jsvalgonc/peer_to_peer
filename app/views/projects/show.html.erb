@@ -30,5 +30,38 @@
   <%= @project.status %>
 </p>
 
+<p>
+  <strong>Prestação:</strong>
+  <%= '%.2f' % @project.installment %>
+</p>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Reference date</th>
+      <th>Value</th>
+      <th>Interest</th>
+      <th>Capital</th>
+      <th>Status</th>
+      <th>Process number</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project.installments.each do |installment| %>
+      <tr>
+        <td><%= installment.reference_date %></td>
+        <td><%= '%.2f' % installment.value %></td>
+        <td><%= '%.2f' % installment.interest %></td>
+        <td><%= '%.2f' % installment.capital %></td>
+        <td><%= installment.status %></td>
+        <td><%= installment.process_number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <%= link_to 'Editar', edit_project_path(@project) %> |
 <%= link_to 'Voltar', projects_path %>

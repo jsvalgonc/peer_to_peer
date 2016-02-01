@@ -5,6 +5,17 @@ class UsersController < ApplicationController
     @users = User.all
   end
   
+  def index_agents
+    if  request.post? then
+      agent_id = params[:id]
+      for n in 1..10 
+        inv = Invitation.new_by_agent(agent_id)
+      end
+      redirect_to users_agents_path, :notice => "Convites Gerados com sucesso"
+    end
+    @users = User.where( :agent => true)
+  end
+  
   def show
     @user = User.find(params[:id])
     unless current_user.admin?
@@ -37,8 +48,13 @@ class UsersController < ApplicationController
     end
   end
 
+
   def secure_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:role,:agent)
+  end
+  
+  def new_user
+    byebug
   end
 
 end

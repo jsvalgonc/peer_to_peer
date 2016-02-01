@@ -1,0 +1,9 @@
+<td>
+   <%= agent.email %>
+</td>
+<td>
+    <%= number_field_tag 'quantity' %>
+</td>
+<td>
+    <%= link_to 'Gerar Convites', generate_invitations_path(agent), method: :post %>
+</td>

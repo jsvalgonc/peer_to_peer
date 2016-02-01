@@ -50,6 +50,7 @@ en:
         start_date: "Data Inicio"
         duration: "Duração (meses)"
         status:  "Status"
+        installment: "Prestação"
       deal:
         value: "Valor" 
         confirmed: "Confirmado" 

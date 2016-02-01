@@ -6,9 +6,11 @@ class Project < ActiveRecord::Base
   validates :duration, presence: true
   validates :entrepreneur_id, presence: true
   validates :description, presence: true
+  validates :interest_rate, presence: true
  
   belongs_to :entrepreneur
   has_many :deals
+  has_many :installments
   
   def set_default_status
     self.status ||= :pending

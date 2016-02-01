@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -38,7 +38,28 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  #config.action_mailer.delivery_method = :smtp 
+  #config.action_mailer.default_url_options = {:host => 'peer-to-peer-lending-jsvalgonc.c9users.io'}
+
+  #É necessário:
+  # Permitir acesso a conta google - https://accounts.google.com/DisplayUnlockCaptcha
+  # Permitir acesso a aplicações menos seguras no gmail -https://www.google.com/settings/security/lesssecureapps
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 '2525',
+  domain:               'gmail.com',
+  user_name:            'jose.j.brito.alves@gmail.com',
+  password:             'palavrapasse2',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
+
+    #:address              => "smtp.live.com",
+    #:port                 => "587",
+    #:domain               => "mail.live.com",
+    #:user_name            => "jsvalgonc@hotmail.com",
+    #:password             => "palavrapasse",
+    #:authentication       => :plain,
+    #:enable_starttls_auto => true
   #JG 21/11/2015 
 end
