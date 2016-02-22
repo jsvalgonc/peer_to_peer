@@ -119,7 +119,7 @@ class EntrepreneursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entrepreneur_params
-      params.require(:entrepreneur).permit(:commit, :full_name, :address, :zip_code, :town, :country, :fiscal_number, :user_id,
+      params.require(:entrepreneur).permit(:commit, :full_name, :address, :zip_code, :town, :country, :fiscal_number, :user_id, :legal_nature, :phone_number, :person_in_charge, :main_activity, :capital, :start_year, :other_debt, :other_costs, :credit_delay, :IBAN,
       :projects_attributes => [:id, :value, :description, :start_date, :duration, :entrepreneur_id, :status])
     end
     

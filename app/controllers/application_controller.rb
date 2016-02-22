@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   def main_agent
     @invitations_unsend = Invitation.where(user_id: current_user, used: "f" )
     #@invitations_send = Invitation.where(user_id: current_user, used: "t", "registered <> 't'" )
-    @invitations_send = Invitation.where("user_id = ? and used <> 'f' and (registered <> 't' or registered = '')",  current_user )
+    @invitations_send = Invitation.where("user_id = ? and used <> 'f' and (registered <> 't' or registered IS NULL)",  current_user )
     @invitations_answered = Invitation.where(user_id: current_user, used: "t", registered: "t"  )
   end
   

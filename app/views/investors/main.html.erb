@@ -1,33 +1,40 @@
+<%= render "shared/navbar" %>
+<h1 class="titulo">Gestão de Investimentos</h1>
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Investidor:</strong> <%= @investor.full_name %>
 </p>
 
-<table>
+<table class="table_investor">
   <tr>
-    <td>Valor Investido </td>
+    <th>Valor Investido </th>
     <td><%= number_to_currency(@investor.investido, :unit => "€") %></td>
-    <td>Saldo Conta</td>
+  </tr>
+  <tr>
+    <th>Saldo Conta</th>
     <td><%= number_to_currency(@investor.saldo, :unit => "€") %></td>
   </tr>
   <tr>
-    <td>Juro Recebido</td>
+    <th>Juro Recebido</th>
     <td><%= number_to_currency(@investor.juro_recebido, :unit => "€") %></td>
-    <td>Total Recebido</td>
+  </tr>
+  <tr>
+    <th>Total Recebido</th>
     <td><%= number_to_currency(@investor.recebido, :unit => "€") %></td>
   </tr>
 </table>
 <br>
 <h2>Portfolio</h2>
 <h3>Actual</h3>
-<table>
-  <tr>
-    <td>Projecto</td>
-    <td>Total Actual</td>
-    <td>Total Investido</td>
-    <td>Juros Totais</td>
-  </tr>
+<table class="table_standard">
+  <thead>
+    <tr>
+      <th>Projecto</th>
+      <th>Total Actual</th>
+      <th>Total Investido</th>
+      <th>Juros Totais</th>
+    </tr>
+  </thead>
   <% @deals_open.each do |deals_open| %>
     <tr>
       <td><%= deals_open.project.description %></td>
@@ -38,11 +45,13 @@
   <% end %>
 </table>
 <h3>Selecionados</h3>
-<table>
-  <tr>
-    <td>Projecto</td>
-    <td>Total Pretendido</td>
-  </tr>
+<table class="table_standard">
+  <thead>
+    <tr>
+      <th>Projecto</th>
+      <th>Total Pretendido</th>
+    </tr>
+  </thead>
   <% @deals_pending.each do |deals_pending| %>
     <tr>
       <td><%= deals_pending.project.description %></td>
@@ -50,6 +59,8 @@
     </tr>
   <% end %>
 </table>
+<br>
+<br>
 
 <%= link_to 'Conta Corrente', account_movements_list_investor_path(@investor) %> |
 <%= link_to 'Investir', index_investor_path(@investor) %> 

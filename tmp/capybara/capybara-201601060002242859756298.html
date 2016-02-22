@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <link rel="stylesheet" media="all" href="/assets/application.css" data-turbolinks-track="true" />
+  <script src="/assets/application.js" data-turbolinks-track="true"></script>
+  
+  <p class="notice">Account movement was successfully created.</p>
+</head>
+<body>
+<div id="flash">
+    <div class="alert alert-notice">Account movement was successfully created.</div>
+</div>  
+
+<p id="notice">Account movement was successfully created.</p>
+
+<h1>Listing Account Movements for investor </h1> 
+
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Value date</th>
+        <th>Movement date</th>
+        <th>Value</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+        <tr>
+          <td>Jose Silva</td>
+          <td>2016-01-06</td>
+          <td>2016-01-06</td>
+          <td>100.0</td>
+          <td><a href="/investors/1/account_movements/1">Show</a></td>
+        </tr>
+    </tbody>
+  </table>
+<br>
+
+<a href="/investors/1/account_movements/new">New Account movement</a>
+
+
+</body>
+</html>

@@ -1,23 +1,39 @@
+<%= render "shared/navbar" %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Investor:</strong>
-  <%= @account_movement.investor.full_name %>
-</p>
-
-<p>
-  <strong>Value date:</strong>
-  <%= @account_movement.value_date %>
-</p>
-
-<p>
-  <strong>Movement date:</strong>
-  <%= @account_movement.movement_date %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @account_movement.value %>
-</p>
+<h1 class="titulo">Consulta de Movimento</h1>
+<table class="view_table_standard">
+  <tr>
+    <td>
+      <strong>Investor:</strong>
+    </td>
+    <td>
+      <%= @account_movement.investor.full_name %>
+    </td>
+  <tr>
+    <td>
+      <strong>Value date:</strong>
+    </td>
+    <td>
+      <%= @account_movement.value_date %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Movement date:</strong>
+    </td>
+    <td>
+      <%= @account_movement.movement_date %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Value:</strong>
+    </td>
+    <td>
+      <%= @account_movement.value %>
+    </td>
+  </tr>
+</table>
 
 <%= link_to 'Back', account_movements_path %>

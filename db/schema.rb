@@ -39,14 +39,17 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.integer  "value"
     t.boolean  "confirmed"
     t.date     "confirmation_date"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "project_id"
-    t.integer  "paid_capital",      default: 0
-    t.integer  "paid_interest",     default: 0
-    t.integer  "accrued_interest",  default: 0
+    t.integer  "paid_capital"
+    t.integer  "paid_interest"
+    t.integer  "accrued_interest"
     t.integer  "status"
   end
+
+  add_index "deals", ["investor_id"], name: "index_deals_on_investor_id"
+  add_index "deals", ["project_id"], name: "index_deals_on_project_id"
 
   create_table "entrepreneurs", force: :cascade do |t|
     t.text     "full_name"
@@ -69,6 +72,8 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.boolean  "credit_delay"
     t.text     "IBAN"
   end
+
+  add_index "entrepreneurs", ["user_id"], name: "index_entrepreneurs_on_user_id"
 
   create_table "installments", force: :cascade do |t|
     t.integer  "project_id"
@@ -96,6 +101,8 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.string   "fiscal_number"
     t.integer  "user_id"
   end
+
+  add_index "investors", ["user_id"], name: "index_investors_on_user_id"
 
   create_table "invitations", force: :cascade do |t|
     t.integer  "user_id"
@@ -127,19 +134,6 @@ ActiveRecord::Schema.define(version: 20160128003611) do
   end
 
   add_index "projects", ["entrepreneur_id"], name: "index_projects_on_entrepreneur_id"
-
-  create_table "temp", force: :cascade do |t|
-    t.integer  "investor_id"
-    t.integer  "value"
-    t.boolean  "confirmed"
-    t.date     "confirmation_date"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.integer  "project_id"
-    t.integer  "paid_capital"
-    t.integer  "paid_interest"
-    t.integer  "accrued_interest"
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

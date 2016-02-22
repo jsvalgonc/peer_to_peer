@@ -1,8 +1,8 @@
+<div class="form_standard">
 <%= form_for([@entrepreneur, @project]) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
       <% @project.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,33 +10,70 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.number_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.number_field :duration %>
-  </div>
-    <div class="field">
-    <%= f.label :interest_rate %><br>
-    <%= f.number_field :interest_rate %>
-  </div>
+<table class="form_table_standard">
+  <tr>
+    <td>    
+      <div class="field">
+        <%= f.label :value %>
+    </td>
+    <td>
+        <%= f.number_field :value %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>    
+      <div class="field">
+        <%= f.label :description %>
+    </td>
+    <td>
+      <%= f.text_area :description %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :start_date %>
+    </td>
+    <td>
+        <%= f.date_select :start_date %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">
+        <%= f.label :duration %>
+    </td>
+    <td>
+      <%= f.number_field :duration %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">
+        <%= f.label :interest_rate %>
+    </td>
+    <td>
+      <%= f.number_field :interest_rate %>
+    </td>
+  </tr>  
+      </div>
+  <div>    
     <%=  f.hidden_field :status %>
   </div>
-  <div class="field">
-      <%= f.label :status %><br>
+  <tr>
+    <td>
+      <div class="field">
+      <%= f.label :status %>
+    </td>
+    <td>
       <%= f.select(:status, Project.statuses.keys.map {|status| [status.titleize,status]}) %>
-  </div>
+      </div>
+    </td>
+    </table>
   <div class="actions">
     <%= f.submit "Registar Projecto"%>
   </div>

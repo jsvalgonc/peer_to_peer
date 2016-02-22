@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: '/home/main', :to => "home#main"
   
   resources :installments
   resources :installments
@@ -37,9 +38,11 @@ Rails.application.routes.draw do
     post 'users/sign_up/:inv_key' => 'registrations#create'
   end
   
-  devise_scope :user do
-    root to: "devise/sessions#new", :controllers => { registrations: 'registrations' }
-  end
+  get '/teste', :to => redirect('home/main.html') 
+  
+  #devise_scope :user do
+  #  root to: "devise/sessions#new", :controllers => { registrations: 'registrations' }
+  #end
   #cria root_path	GET	/	devise/sessions#new {:controllers=>{:registrations=>"registrations"}
   
   devise_for :users , :controllers => { registrations: 'registrations' }

@@ -1,5 +1,5 @@
+<%= render "shared/navbar" %>
 <p id="notice"><%= notice %></p>
-
 
 <%= form_tag investors_path, :method => 'get' do %>
   <p>
@@ -8,10 +8,9 @@
   </p>
 <% end %>
 
+<h1 class="titulo">Investidores</h1>
 
-<h1>Investidores</h1>
-
-<table>
+<table class="table_standard">
   <thead>
     <tr>
       <th>Nome</th>
@@ -35,10 +34,10 @@
         <td><%= investor.country %></td>
         <td><%= investor.NIF %></td>
         <td><%= investor.fiscal_number %></td>
-        <td><%= link_to 'Mostrar', investor %></td>
-        <td><%= link_to 'Editar', edit_investor_path(investor) %></td>
-        <td><%= link_to 'Apagar', investor, method: :delete, data: { confirm: 'Confirma?' } %></td>
-        <td><%= link_to 'Movimentar', new_investor_account_movement_path(investor) %></td>
+        <td><%= link_to 'Mostrar', investor %>|
+        <%= link_to 'Editar', edit_investor_path(investor) %>|
+        <%= link_to 'Apagar', investor, method: :delete, data: { confirm: 'Confirma?' } %>|
+        <%= link_to 'Movimentar', new_investor_account_movement_path(investor) %></td>
       </tr>
     <% end %>
   </tbody>

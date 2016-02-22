@@ -1,8 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
   
     def after_sign_in_path_for(resource_or_scope)
+      @user=User.find_by_id(resource_or_scope)
       case current_user.role
-      when "investor"
+      when "investor" 
         investor_new_by_user_path(:user_id => @user.id)
       when "entrepreneur"
         entrepreneur_new_by_user_path(:user_id => @user.id)
@@ -15,6 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
       #verifica se o código existe e se ainda não foi usado
       #se estiver errado ou já tiver sido usado reencaminha para uma mensagem e não permite o acesso
       #se o código ainda não tiver sido utilizado, actualiza o registo como usado e permiti cria o utilizador
+
       @inv_key = params[:inv_key]
       invitation = Invitation.find_by_inv_key(@inv_key)
       

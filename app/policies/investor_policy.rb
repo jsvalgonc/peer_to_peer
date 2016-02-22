@@ -50,6 +50,7 @@ class InvestorPolicy < ApplicationPolicy
   
   def search?
     user.admin? || user.finance?
+    byebug
   end
   
 end

@@ -1,22 +1,81 @@
-<h1>Peer-To-Peer Loans</h1>
-<h2>Gestão da Aplicação</h2>
-
-<h2>Projectos</h2>
-<p><%= link_to 'Projectos', projects_path %></p>
-<h2>Utilizadores</h2>
-<p><%= link_to 'Utilizadores', users_path %></p>
-<h2>Investidores</h2>
-<p><%= link_to 'Investidores', investors_path %></p>
-<h2>Empreendedores</h2>
-<p><%= link_to 'Empreendedores', entrepreneurs_path %></p>
-<h2>Agentes</h2>
-<p><%= link_to 'Agentes', users_agents_path %></p>
-<h2>Processos</h2>
-Mês Actual=<%= @current_month %> <%= link_to 'Fechar Mês', admin_close_month_path %></p>
-<h2>Gerar Ficheiro</h2>
-<%= link_to 'Gerar Ficheiro de Cobranças', test_write_file_path %></p>
+<%= render "shared/navbar" %>
+<h1 class="titulo">Gestão da Aplicação</h1>
+<body style="background-color:lightgrey;">
+<table class="table_main">
+    <tr>
+        <td>
+            <%= embedded_svg "projects.svg", class: 'table_main_svg' %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= embedded_svg "users.svg", class: 'table_main_svg' %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= embedded_svg "investors.svg", class: 'table_main_svg' %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= embedded_svg "entrepreneurs.svg", class: 'table_main_svg' %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= embedded_svg "agents.svg", class: 'table_main_svg' %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= embedded_svg "files.svg", class: 'table_main_svg' %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= embedded_svg "closing.svg", class: 'table_main_svg' %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <%= link_to 'Projectos', projects_path, class: "table_main_link" %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= link_to 'Utilizadores', users_path, class: "table_main_link"  %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= link_to 'Investidores', investors_path, class: "table_main_link"  %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= link_to 'Empreendedores', entrepreneurs_path, class: "table_main_link"  %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= link_to 'Agentes', users_agents_path, class: "table_main_link"  %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <%= link_to 'Gerar Ficheiro de Cobranças', test_write_file_path, class: "table_main_link"  %>
+        </td>
+        <td>
+        </td>
+        <td>
+            <div class="table_main_text">Mês Actual=<%= @current_month %><div>
+            <%= link_to 'Fechar Mês', admin_close_month_path, class: "table_main_link" %>
+        </td>
+    </tr>
+</table>
 <br>
-
-
+<br>
+<br>
 
 

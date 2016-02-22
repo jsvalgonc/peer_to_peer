@@ -1,6 +1,5 @@
-https://www.google.pt/search?q=db%3Aschema%3Aload+RAILS_ENV%3Dtest&oq=db%3Aschema%3Aload+RAILS_ENV%3Dtest&aqs=chrome..69i57j69i58.534j0j4&sourceid=chrome&es_sm=93&ie=UTF-8
-http://stackoverflow.com/questions/16632216/rake-dbtestprepare-does-not-setup-test-databse
-http://stackoverflow.com/questions/7693365/whats-the-difference-between-dbtestclone-dbtestclone-structure-dbtestlo
+
+http://www.flaticon.com/
 ___________________
 Aplicação corre em:
 https://pd4mealplanner-joaogoncalvespd4.c9.io/
@@ -17,8 +16,11 @@ http://localhost:3000/
 Abrir o SQL 
 sqlite3 db/development.sqlite3
 
+Executar script
+.read db/scripts/apaga_tabelas.sql
+
 lista tabelas: .tables
-Sair: .quit
+Sair: .quitse
 Esquemas: .schema
 
 Criar Tabela 

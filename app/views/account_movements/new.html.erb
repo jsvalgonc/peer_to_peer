@@ -1,5 +1,9 @@
-<h1> Novo Movimento em Conta para o investidor </h1><% @investor.full_name %>
+<%= render "shared/navbar" %>
+<h1 class="titulo"> Novo Movimento na Conta de Investidor </h1>
+<br>
+<h3>Investidor: <%= @investor.full_name %></h3>
 
+<div class="form_standard">
 <%= form_for([@investor,@account_movement]) do |f| %>
   <% if @account_movement.errors.any? %>
     <div id="error_explanation">
@@ -13,36 +17,40 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :investor_id %><br>
     <%= f.hidden_field :investor_id %>
   </div>
+  <table class="form_table_standard">
   <div class="field">
-    <%= f.label :value_date %><br>
-    <%= f.date_select :value_date %>
+    <tr><td><%= f.label :value_date %></td>
+    <td><%= f.date_select :value_date %></td>
+    </tr>
   </div>
   <div class="field">
-    <%= f.label :movement_date %><br>
-    <%= f.date_select :movement_date %>
+    <tr><td><%= f.label :movement_date%></td>
+    <td><%= f.date_select :movement_date%></td></tr>
   </div>
   <div class="field">
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
+    <tr><td><%= f.label :value %></td>
+    <td><%= f.text_field :value  %></td></tr>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <tr><td><%= f.label :description %></td>
+    <td><%= f.text_field :description  %></td></tr>
   </div>
     <div class="field">
-    <%= f.label :movement_type %><br>
-    <%= f.select(:movement_type, AccountMovement.movement_types.keys.map {|movement_type| [movement_type.titleize,movement_type]}) %>
+    <tr><td><%= f.label :movement_type %></td>
+    <td><%= f.select(:movement_type, AccountMovement.movement_types.keys.map {|movement_type| [movement_type.titleize,movement_type]} ) %></td></tr>
   </div>
+  </table>
 
   <div class="actions">
     <%= f.submit "Registar" %>
   </div>
   
 <% end %>
+</div>
 
 <%= link_to 'Voltar', account_movements_path %>
 

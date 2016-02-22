@@ -94,6 +94,7 @@ class InvestorsController < ApplicationController
   def search
     authorize Investor
     @investors = Investor.search(params[:search])
+    byebug
   end
   
 

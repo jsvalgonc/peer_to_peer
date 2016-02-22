@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <link rel="stylesheet" media="all" href="/assets/application.css" data-turbolinks-track="true" />
+  <script src="/assets/application.js" data-turbolinks-track="true"></script>
+  
+  <p class="notice"></p>
+</head>
+<body>
+<div id="flash">
+</div>  
+
+<h1>Editar Projecto</h1>
+
+<form class="edit_project" id="edit_project_1" action="/entrepreneurs/2/projects/1" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" />
+
+  <div class="field">
+    <label for="project_value">Valor</label><br>
+    <input type="number" value="1000" name="project[value]" id="project_value" />
+  </div>
+  <div class="field">
+    <label for="project_description">Descrição</label><br>
+    <textarea name="project[description]" id="project_description">
+Arrumar Carros</textarea>
+  </div>
+  <div class="field">
+    <label for="project_start_date">Data Inicio</label><br>
+    <select id="project_start_date_1i" name="project[start_date(1i)]">
+<option value="2011">2011</option>
+<option value="2012">2012</option>
+<option value="2013">2013</option>
+<option value="2014">2014</option>
+<option value="2015">2015</option>
+<option value="2016" selected="selected">2016</option>
+<option value="2017">2017</option>
+<option value="2018">2018</option>
+<option value="2019">2019</option>
+<option value="2020">2020</option>
+<option value="2021">2021</option>
+</select>
+<select id="project_start_date_2i" name="project[start_date(2i)]">
+<option value="1" selected="selected">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+<select id="project_start_date_3i" name="project[start_date(3i)]">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31" selected="selected">31</option>
+</select>
+
+  </div>
+  <div class="field">
+    <label for="project_duration">Duração (meses)</label><br>
+    <input type="number" value="36" name="project[duration]" id="project_duration" />
+  </div>
+    <div class="field">
+    <label for="project_interest_rate">Interest rate</label><br>
+    <input type="number" value="0.12" name="project[interest_rate]" id="project_interest_rate" />
+  </div>
+    <input type="hidden" value="subscription" name="project[status]" id="project_status" />
+  </div>
+  <div class="field">
+      <label for="project_status">Status</label><br>
+      <select name="project[status]" id="project_status"><option value="pending">Pending</option>
+<option selected="selected" value="subscription">Subscription</option>
+<option value="open">Open</option>
+<option value="close">Close</option></select>
+  </div>
+  <div class="actions">
+    <input type="submit" name="commit" value="Registar Projecto" />
+  </div>
+</form>
+
+<a href="/projects/1">Mostrar</a> |
+<a href="/projects">Voltar</a>
+
+<p><a href="/users/sign_out">Sign_out</a></p>
+</body>
+</html>

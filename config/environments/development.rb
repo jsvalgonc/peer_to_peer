@@ -44,14 +44,17 @@ Rails.application.configure do
   #É necessário:
   # Permitir acesso a conta google - https://accounts.google.com/DisplayUnlockCaptcha
   # Permitir acesso a aplicações menos seguras no gmail -https://www.google.com/settings/security/lesssecureapps
+  config.action_mailer.default_url_options = { host: '0.0.0.0:8080' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
-  port:                 '2525',
+  #port:                 2525,
+  port:                 587,
   domain:               'gmail.com',
   user_name:            'jose.j.brito.alves@gmail.com',
   password:             'palavrapasse2',
-  authentication:       'plain',
+  #authentication:       'plain',
+  authentication:       'login',
   enable_starttls_auto: true  }
 
     #:address              => "smtp.live.com",

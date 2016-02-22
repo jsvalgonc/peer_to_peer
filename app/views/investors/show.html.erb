@@ -1,35 +1,56 @@
+<%= render "shared/navbar" %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nome Completo:</strong>
-  <%= @investor.full_name %>
-</p>
-
-<p>
-  <strong>Morada:</strong>
-  <%= @investor.address %>
-</p>
-
-<p>
-  <strong>Codigo Postal:</strong>
-  <%= @investor.zip_code %>
-</p>
-
-<p>
-  <strong>Localidade:</strong>
-  <%= @investor.town %>
-</p>
-
-<p>
-  <strong>Pais:</strong>
+<h1 class="titulo">Consulta - Investidor</h1>
+<table class="view_table_standard">
+  <tr>
+    <td>
+      <strong>Nome Completo:</strong>
+    </td>
+    <td>
+      <%= @investor.full_name %>
+    </td>
+  <tr>
+    <td>
+      <strong>Morada:</strong>
+    </td>
+    <td>
+      <%= @investor.address %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Codigo Postal:</strong>
+    </td>
+    <td>
+      <%= @investor.zip_code %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Localidade:</strong>
+    </td>
+    <td>
+      <%= @investor.town %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Pais:</strong>
+    </td>
+    <td>
   <%= @investor.country %>
-</p>
-
-<p>
-  <strong>NIF:</strong>
-  <%= @investor.NIF %>
-</p>
-
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>NIF:</strong>
+    </td>
+    <td>
+      <%= @investor.NIF %>
+    </td>
+  </tr>
+</table>
 <%= link_to 'Conta Corrente', account_movements_list_investor_path(@investor) %> |
 <%= link_to 'Editar', edit_investor_path(@investor) %> |
 <%= link_to 'Voltar', investors_path %>

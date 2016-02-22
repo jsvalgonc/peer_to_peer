@@ -1,42 +1,38 @@
+<%= render "shared/navbar" %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Descrição:</strong>
-  <%= @project.description %>
-</p>
-
-<p>
-  <strong>Valor:</strong>
-  <%= @project.value %>
-</p>
-
-<p>
-  <strong>Data Inicio:</strong>
-  <%= @project.start_date %>
-</p>
-
-<p>
-  <strong>Duração:</strong>
-  <%= @project.duration %>
-</p>
-
-<p>
-  <strong>Entrepreneur:</strong>
-  <%= @project.entrepreneur.full_name %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @project.status %>
-</p>
-
-<p>
-  <strong>Prestação:</strong>
-  <%= '%.2f' % @project.installment %>
-</p>
-
-
-<table>
+<h1 class="titulo">Consulta Projecto</h1>
+<table class="view_table_standard">
+<tr>
+  <td><strong>Descrição:</strong></td>
+  <td><%= @project.description %></td>
+</tr>
+<tr>
+<td><strong>Valor:</strong></td>
+<td><%= @project.value %></td>
+</tr>
+<tr>
+  <td><strong>Data Inicio:</strong></td>
+  <td><%= @project.start_date %></td>
+</tr>
+<tr>
+  <td><strong>Duração:</strong></td>
+  <td><%= @project.duration %></td>
+</tr>
+<tr>
+  <td><strong>Entrepreneur:</strong></td>
+  <td><%= @project.entrepreneur.full_name %></td>
+</tr>
+<tr>
+  <td><strong>Status:</strong></td>
+  <td><%= @project.status %></td>
+</tr>
+<tr>
+  <td><strong>Prestação:</strong></td>
+  <td><%= '%.2f' % @project.installment %></td>
+</tr>
+</table>
+<table  class="table_standard">
   <thead>
     <tr>
       <th>Reference date</th>

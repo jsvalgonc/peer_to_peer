@@ -1,8 +1,13 @@
+<%= render "shared/navbar" %>
+<p id="notice"><%= notice %></p>
+
+<h1 class="titulo">Agentes</h1>
+
+
 <div class="container">
   <div class="row">
-    <h3>Users</h3>
     <div class="column">
-      <table class="table">
+      <table class="agent_table_col table_standard ">
         <tbody>
           <% @users.each do |user| %>
             <tr>

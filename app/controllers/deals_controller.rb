@@ -19,6 +19,7 @@ class DealsController < ApplicationController
   
   # GET /deals/new
   def new_deal_investor_project
+    byebug
     @deal = Deal.new
     @deal.project_id = params["id_project"]
     @deal.investor_id = params["id_investor"]

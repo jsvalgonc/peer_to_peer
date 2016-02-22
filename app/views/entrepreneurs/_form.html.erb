@@ -1,3 +1,4 @@
+<div class="form_standard">
 <%= form_for(@entrepreneur) do |f| %>
   <% if @entrepreneur.errors.any? %>
     <div id="error_explanation">
@@ -10,77 +11,180 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :full_name %><br>
-    <%= f.text_area :full_name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </div>
-  <div class="field">
-    <%= f.label :zip_code %><br>
-    <%= f.text_area :zip_code %>
-  </div>
-  <div class="field">
-    <%= f.label :town %><br>
-    <%= f.text_area :town %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br>
-    <%= f.text_area :country %>
-  </div>
-  <div class="field">
-    <%= f.label :fiscal_number %><br>
-    <%= f.text_area :fiscal_number %>
-  </div>
-  <div class="field">
-    <%= f.label :IBAN %><br>
-    <%= f.text_area :IBAN %>
-  </div>
-  <div class="field">
-    <%= f.label :legal_nature %><br>
-    <%= f.text_area :legal_nature %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_area :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :person_in_charge %><br>
-    <%= f.text_area :person_in_charge %>
-  </div>
-  <div class="field">
-    <%= f.label :main_activity %><br>
-    <%= f.text_area :main_activity %>
-  </div>  
-  <div class="field">
-    <%= f.label :capital %><br>
-    <%= f.text_area :capital %>
-  </div>  
-    <div class="field">
-    <%= f.label :start_year %><br>
-    <%= f.text_area :start_year %>
-  </div>
-  <div class="field">
-    <%= f.label :other_debt %><br>
-    <%= f.text_area :other_debt %>
-  </div>
-    <div class="field">
-    <%= f.label :other_costs %><br>
-    <%= f.text_area :other_costs %>
-  </div>
-  <div class="field">
-    <%= f.label :credit_delay %><br>
-    <%= f.check_box :credit_delay %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :user_id %>
-  </div>
   
+
+<table class="form_table_standard">
+  <tr>
+    <td>  
+      <div class="field">
+        <%= f.label :full_name %>
+    </td>
+    <td>    
+        <%= f.text_area :full_name %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :address %>
+    </td>
+    <td>    
+      <%= f.text_area :address %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :zip_code %>
+    </td>
+    <td>    
+        <%= f.text_area :zip_code %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+    <div class="field">
+      <%= f.label :town %>
+    </td>
+    <td>    
+      <%= f.text_area :town %>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+  <div class="field">
+    <%= f.label :country %>
+    </td>
+    <td>    
+      <%= f.text_area :country %>
+  </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+  <div class="field">
+      <%= f.label :fiscal_number %>
+    </td>
+    <td>    
+      <%= f.text_area :fiscal_number %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+        <div class="field">
+          <%= f.label :IBAN %>
+    </td>
+    <td>    
+      <%= f.text_area :IBAN %>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :legal_nature %>    
+    </td>
+    <td>    
+      <%= f.text_area :legal_nature %>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+    <div class="field">
+      <%= f.label :phone_number %>    
+    </td>
+    <td>    
+      <%= f.text_area :phone_number %>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :person_in_charge %>
+    </td>
+    <td>    
+      <%= f.text_area :person_in_charge %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :main_activity %>
+    </td>
+    <td>    
+      <%= f.text_area :main_activity %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :capital %>
+    </td>
+    <td>    
+      <%= f.text_area :capital %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :start_year %>
+    </td>
+    <td>    
+      <%= f.text_area :start_year %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :other_debt %>
+    </td>
+    <td>    
+      <%= f.text_area :other_debt %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+      <%= f.label :other_costs %>
+    </td>
+    <td>    
+      <%= f.text_area :other_costs %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.label :credit_delay %>
+    </td>
+    <td>    
+      <%= f.check_box :credit_delay %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>   
+      <div class="field">
+        <%= f.hidden_field :user_id %>
+      </div>
+      </td>
+    </tr>
+  </table>
   <div class="actions">
     <%= f.submit "Registar Empreendedor"%>
   </div>
   
 <% end %>
+</div>
