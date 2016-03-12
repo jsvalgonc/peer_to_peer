@@ -19,10 +19,12 @@ class DealsController < ApplicationController
   
   # GET /deals/new
   def new_deal_investor_project
-    byebug
     @deal = Deal.new
     @deal.project_id = params["id_project"]
     @deal.investor_id = params["id_investor"]
+    @deal.paid_capital=0
+    @deal.paid_interest=0
+    @deal.confirmed = 'f'
   end
 
   # GET /deals/1/edit
@@ -43,6 +45,9 @@ class DealsController < ApplicationController
       @account_movement.investor_id= deal_params[:investor_id]
       @account_movement.save
       @deal = Deal.new(deal_params)
+      @deal.paid_capital=0
+      @deal.paid_interest=0
+      @deal.confirmed = 'f'
       deal_save = @deal.save
     else
       deal_save = false

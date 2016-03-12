@@ -1,35 +1,63 @@
-<h2>Registo</h2>
-
+<%= render "shared/navbar" %>
+<h1>Registo</h1>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="w-row login_row">
+  <div class="w-col w-col-2 login_col_1">
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(Mínimo de <%= @minimum_password_length %> caracteres)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="w-col w-col-8 login_col_2">
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="w-col w-col-2">
   </div>
-  <br>
-  <b>Tipo de Utilizador</b><br />
-    <%= f.radio_button :role, 'investor', { :checked => true }   %> Investidor<br />
-    <%= f.radio_button :role, 'entrepreneur' %> Empreendedor<br />
-  </p>
+</div>
+  <div class="w-section">
+    <div class="w-container login_container">
+      <div class="w-row login_columns">
+        <div class="w-col w-col-3">
+        </div>
+          <div class="w-col w-col-6">
+            <div class="login_div">
+              <div class="w-form">
+                <div class="field">
+                  <%= f.label :email %>
+                  <%= f.email_field :email, autofocus: true , autocomplete: "off", id: "password",  placeholder: "Email", required: "required", class: "w-input login_email" %>
+                  <br />
+                </div>
+                <div class="field">
+                  <%= f.label :password %>
+                  <% if @minimum_password_length %>
+                  <em>(Mínimo de <%= @minimum_password_length %> caracteres)</em>
+                  <% end %>
+                  <%= f.password_field :password, autocomplete: "off", id: "password", type: "password", placeholder: "defina a sua password", required: "required", class: "w-input login_email" %>
+                  <br />
+                </div>
+                <div class="field">
+                  <%= f.label "confirmação de password" %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "off", id: "password_confirmation", type: "password", placeholder: "confirme a sua password", required: "required", class: "w-input login_email" %>
+                </div>
+                <b>Tipo de Utilizador</b>
+                <div class="login_email">
+                    <%= f.radio_button :role, 'investor', { :checked => true }   %> Investidor<br />
+                    <%= f.radio_button :role, 'entrepreneur' %> Empreendedor<br />
+                  </p>
+                </div>
+                <%= hidden_field_tag 'inv_key', params[:inv_key] %>
+                <div class="actions">
+                  <%= f.submit "Registar", "data-wait" => "Please wait...", class: "w-button login_button"%>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-col w-col-3">
+          </div>
+        </div>
+      </div>
+    </div>
     <br>
-  <%= hidden_field_tag 'inv_key', params[:inv_key] %>
-  <div class="actions">
-    <%= f.submit "Registar"%>
+    <br>
+  <div class="w-section">
+    <div><br><br> &nbsp; &nbsp; &nbsp;Esqueceu-se da password?
+    </div>
   </div>
 <% end %>
-
 <%= render "devise/shared/links" %>

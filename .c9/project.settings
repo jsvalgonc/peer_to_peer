@@ -49,6 +49,7 @@
                 "Ruby on Rails": {
                     "command": "",
                     "default": true,
+                    "env": {},
                     "name": "Ruby on Rails",
                     "runner": "Ruby on Rails (default)"
                 }

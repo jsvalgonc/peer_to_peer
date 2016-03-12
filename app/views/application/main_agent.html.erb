@@ -1,15 +1,13 @@
-<h1>Peer-To-Peer Loans</h1>
-<h2>Agente-Página Principal</h2>
-<br>
-<br>
+<%= render "shared/navbar" %>
+<body>
+<h1 class="titulo">Agente</h1>
 <h2>Convites</h2>
-<b>Convites a enviar</b>
-<table>
+<h4>Convites a enviar</h4>
+<table  class="table_standard">
   <thead>
     <tr>
       <th>email</th>
       <th> </th>
-      <th>chave</th>
     </tr>
   </thead>
   <tbody>
@@ -17,9 +15,9 @@
         <%= form_for(invitation , :url => {:controller =>"invitations",:action => "send_mail", :method => "post"}   ) do |f| %>
           <tr>
             <%= f.hidden_field :id %>
-            <td> <%= f.text_field :email %></td>
+            <%= f.hidden_field :inv_key %>
+            <td> <%= f.text_field :email, :class => "convite_mail" %></td>
             <td><%= f.submit 'Convidar', :class => 'button-xs' %></td>
-            <td><%= invitation.inv_key %></td>
           </tr>
         <% end %>
     <% end %>
@@ -27,9 +25,9 @@
 </table>
 <br>
 <br>
-<b>Convites enviados</b> 
+<h4>Convites enviados</h4> 
 <br>
-<table>
+<table class="table_standard">
   <thead>
     <tr>
       <th>email</th>
@@ -46,9 +44,9 @@
   </tbody>
 </table>
 <br>
-<b>Convites respondidos</b>
+<h4>Convites respondidos</h4>
 <br>
-<table>
+<table class="table_standard">
   <thead>
     <tr>
       <th>email</th>
@@ -68,7 +66,7 @@
 <h2>Investidor</h2>
 <%= link_to 'Página Principal de Investidor', investor_main_path(Investor.find_by_user_id(current_user)) %> </p>
 <br>
-
+</body>
 
 
 

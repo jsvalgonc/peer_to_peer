@@ -1,5 +1,7 @@
-<h1>Investimento Selecionado</h1>
+<%= render "shared/navbar" %>
+<h1 class="titulo">Nova Transacção</h1>
 
+<div class="form_standard">
 <%= form_for(@deal) do |f| %>
   <% if @deal.errors.any? %>
     <div id="error_explanation">
@@ -11,17 +13,34 @@
       </ul>
     </div>
   <% end %>
-    <strong>Investidor:</strong>
-    <%= @deal.investor.full_name %>
-  <br>
-    <strong>Projecto:</strong>
-    <%=  @deal.project.description %>
-  <br>
-  <br><br>
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.number_field :value %>
-  </div>
+<table class="form_table_standard">
+  <tr>
+    <td>  
+        <div class="field">
+          <strong>Investidor:</strong>
+          <%= @deal.investor.full_name %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>  
+      <div class="field">
+        <strong>Projecto:</strong>
+        <%=  @deal.project.description %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td> 
+      <div class="field">
+        <%= f.label :value %>
+    </td>
+    <td>    
+      <%= f.number_field :value %>
+        </div>
+    </td>
+  </tr>  
+</table>  
   <br>
     <%= f.hidden_field :investor_id %>
     <%=  f.hidden_field :project_id %>
@@ -29,6 +48,6 @@
     <%= f.submit "Registar"%>
   </div>
 <% end %>
-
+</div>
 
 <%= link_to 'Back', deals_path %>

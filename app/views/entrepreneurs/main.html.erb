@@ -1,26 +1,28 @@
+<%= render "shared/navbar" %>
+<h1 class="titulo">Entrepreneur</h1>
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Entrepreneur: </strong> <%= @entrepreneur.full_name %>
 </p>
 
-<table>
+<table class="table_investor">
   <tr>
-    <td>Total de Projectos Apresentados </td>
+    <th>Total de Projectos Apresentados </th>
     <td><%= number_to_currency(@entrepreneur.totalProjectsValue, :unit => "€") %></td>
-    <td>N.º de Projectos Apresentados</td>
+    <th>N.º de Projectos Apresentados</th>
     <td><%= @entrepreneur.totalProjectsN %></td>
   </tr>
   <tr>
-    <td>Total Financiado</td>
+    <th>Total Financiado</th>
     <td><%= number_to_currency(@entrepreneur.financedProjectsValue, :unit => "€") %></td>
-    <td>N.º de Projectos Financiados</td>
+    <th>N.º de Projectos Financiados</th>
     <td><%= @entrepreneur.financedProjectsN %></td>
   </tr>
   <tr>
-    <td>Total a reembolsar(capital)</td>
+    <th>Total a reembolsar(capital)</th>
     <td><%= number_to_currency(@entrepreneur.openBalance, :unit => "€") %></td>
-    <td>N.º de projectos em reembolso</td>
+    <th>N.º de projectos em reembolso</th>
     <td><%= @entrepreneur.openProjectsN %></td>
   </tr>
 </table>
@@ -29,7 +31,7 @@
 <h2>Portfolio</h2>
 
 <h3>Em aprovação</h3>
-<table>
+<table class="table_standard">
   <tr>
     <td>Projecto</td>
     <td>Total Solicitado</td>
@@ -43,7 +45,7 @@
 </table>
 
 <h3>Em subscrição</h3>
-<table>
+<table class="table_standard">
   <tr>
     <td>Projecto</td>
     <td>Total Solicitado</td>
@@ -56,7 +58,7 @@
   <% end %>
 </table>
 <h3>Em amortização</h3>
-<table>
+<table class="table_standard">
   <tr>
     <td>Projecto</td>
     <td>Total Financiado</td>
@@ -72,7 +74,7 @@
 </table>
 <br>
 <h3>Fechados</h3>
-<table>
+<table class="table_standard">
   <tr>
     <td>Projecto</td>
     <td>Total Solicitado</td>
@@ -85,10 +87,8 @@
   <% end %>
 </table>
 
-<%= link_to 'Criar Projecto', new_entrepreneur_project_path(@entrepreneur), method: :get %>
+<h3><%= link_to 'Criar Projecto', new_entrepreneur_project_path(@entrepreneur), method: :get %></h3>
 
 <br>
 <br>
-<%= link_to 'Edit', edit_entrepreneur_path(@entrepreneur) %> |
-<%= link_to 'Back', entrepreneurs_path %> |
-<%= link_to 'Sign_out', destroy_user_session_path %></p>
+

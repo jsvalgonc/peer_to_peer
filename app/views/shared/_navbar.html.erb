@@ -7,7 +7,13 @@
                 <a href="#" class="w-nav-link navbar_link">Home</a>
                 <a href="#" class="w-nav-link navbar_link">Acerca</a>
                 <a href="#" class="w-nav-link navbar_link">Contactos</a>
+                <a class="navbar_user">
+                    <% if not(current_user.nil?)  %>
+                        <%= current_user.email %>
+                    <% end %>
+                </a>
             </nav>
         </div>
     </div>
+
 </div>

@@ -64,6 +64,8 @@ en:
         value: "Valor"
         description: "Descrição"
         movement_type: "Tipo de Movimento"
+      users:
+        password_confirmation: "Confirmação de password"
       
       
  
