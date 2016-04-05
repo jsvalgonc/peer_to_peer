@@ -56,6 +56,7 @@ Rails.application.configure do
   #authentication:       'plain',
   authentication:       'login',
   enable_starttls_auto: true  }
+  config.web_console.whitelisted_ips = '0.0.0.0/0.0.0.0'
 
     #:address              => "smtp.live.com",
     #:port                 => "587",

@@ -50,5 +50,5 @@ Rails.application.configure do
       :authentication       => :login,
       :enable_starttls_auto => true
   }   
-  
+  config.web_console.whitelisted_ips = '109.49.133.185'
 end
