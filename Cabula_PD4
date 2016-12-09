@@ -132,5 +132,3 @@ http://codepen.io/chriscoyier/pen/egHEK (tag)
 --------------------autenticação e roles------------------------------------------
 https://github.com/RailsApps/rails-devise-roles
 https://github.com/RailsApps/rails3-devise-rspec-cucumber/blob/master/features/step_definitions/user_steps.rb
-
-User.find(params[:id]).email
