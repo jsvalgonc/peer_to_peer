@@ -58,6 +58,15 @@ bundle exec rake db:schema:dump
 Reconstruir base de dados de teste
 bundle exec rake db:schema:load RAILS_ENV=test -t
 
+Postgres
+iniciar serviço
+sudo service postgresql start
+sudo sudo -u postgres psql
+\c connent
+\dt - tabelas
+\l - bases de dados
+q - sair
+
 
 
 -----------Gems------------------------------

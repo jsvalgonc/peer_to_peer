@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160128003611) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "account_movements", force: :cascade do |t|
     t.date     "value_date"
     t.date     "movement_date"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.integer  "movement_type"
   end
 
-  add_index "account_movements", ["investor_id"], name: "index_account_movements_on_investor_id"
+  add_index "account_movements", ["investor_id"], name: "index_account_movements_on_investor_id", using: :btree
 
   create_table "app_parameters", force: :cascade do |t|
     t.string   "parameter"
@@ -48,8 +51,8 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.integer  "status"
   end
 
-  add_index "deals", ["investor_id"], name: "index_deals_on_investor_id"
-  add_index "deals", ["project_id"], name: "index_deals_on_project_id"
+  add_index "deals", ["investor_id"], name: "index_deals_on_investor_id", using: :btree
+  add_index "deals", ["project_id"], name: "index_deals_on_project_id", using: :btree
 
   create_table "entrepreneurs", force: :cascade do |t|
     t.text     "full_name"
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.text     "IBAN"
   end
 
-  add_index "entrepreneurs", ["user_id"], name: "index_entrepreneurs_on_user_id"
+  add_index "entrepreneurs", ["user_id"], name: "index_entrepreneurs_on_user_id", using: :btree
 
   create_table "installments", force: :cascade do |t|
     t.integer  "project_id"
@@ -87,7 +90,7 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "installments", ["project_id"], name: "index_installments_on_project_id"
+  add_index "installments", ["project_id"], name: "index_installments_on_project_id", using: :btree
 
   create_table "investors", force: :cascade do |t|
     t.string   "full_name"
@@ -102,7 +105,7 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.integer  "user_id"
   end
 
-  add_index "investors", ["user_id"], name: "index_investors_on_user_id"
+  add_index "investors", ["user_id"], name: "index_investors_on_user_id", using: :btree
 
   create_table "invitations", force: :cascade do |t|
     t.integer  "user_id"
@@ -116,7 +119,7 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.integer  "UserCreated"
   end
 
-  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id"
+  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.integer  "value"
@@ -127,13 +130,13 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "status"
-    t.float    "open_balance",    default: 0.0
-    t.float    "interest_rate"
-    t.float    "installment"
+    t.decimal  "open_balance",    default: 0.0
+    t.decimal  "interest_rate"
+    t.decimal  "installment"
     t.datetime "end_date"
   end
 
-  add_index "projects", ["entrepreneur_id"], name: "index_projects_on_entrepreneur_id"
+  add_index "projects", ["entrepreneur_id"], name: "index_projects_on_entrepreneur_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -152,7 +155,15 @@ ActiveRecord::Schema.define(version: 20160128003611) do
     t.boolean  "agent"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "account_movements", "investors"
+  add_foreign_key "deals", "investors"
+  add_foreign_key "deals", "projects"
+  add_foreign_key "entrepreneurs", "users"
+  add_foreign_key "installments", "projects"
+  add_foreign_key "investors", "users"
+  add_foreign_key "invitations", "users"
+  add_foreign_key "projects", "entrepreneurs"
 end

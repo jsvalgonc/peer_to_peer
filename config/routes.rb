@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  root to: '/home/main', :to => "home#main"
-  
+  #root to: '/home/main', :to => "home#main"
   resources :installments
   resources :installments
   resources :deals
-  
+
   get '/application/close_month' => "application#close_month", as: 'admin_close_month'  
   get '/application/main_admin', :to => "application#main_admin", as: 'main_admin'
   get '/aplication/teste_write_file', :to => "application#test_write_file", as: 'test_write_file'
@@ -44,7 +43,8 @@ Rails.application.routes.draw do
   #  root to: "devise/sessions#new", :controllers => { registrations: 'registrations' }
   #end
   #cria root_path	GET	/	devise/sessions#new {:controllers=>{:registrations=>"registrations"}
-  
+  # Apenas para teste
+  #devise_for :users, :controllers => {:sessions => "sessions"} 
   devise_for :users , :controllers => { registrations: 'registrations' }
   # cria routes para sessions/password/registrations
   

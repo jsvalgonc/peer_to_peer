@@ -110,7 +110,8 @@ end
 
 Given /^I am on (.+)$/ do |page_name|
   path_to_page_name = path_to(page_name)
-  visit path_to_page_name 
+  visit path_to_page_name
+  save_and_open_page
 end
 
 

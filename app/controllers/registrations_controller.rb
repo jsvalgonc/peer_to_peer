@@ -16,7 +16,6 @@ class RegistrationsController < Devise::RegistrationsController
       #verifica se o código existe e se ainda não foi usado
       #se estiver errado ou já tiver sido usado reencaminha para uma mensagem e não permite o acesso
       #se o código ainda não tiver sido utilizado, actualiza o registo como usado e permiti cria o utilizador
-
       @inv_key = params[:inv_key]
       invitation = Invitation.find_by_inv_key(@inv_key)
       

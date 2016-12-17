@@ -109,7 +109,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_date
-    return DateTime.parse(AppParameter.where(:parameter => "CurrentMonth").first.value)
+     return DateTime.parse(AppParameter.where(:parameter => "CurrentMonth").first.value)
   end
   
   def current_date_and_increment
