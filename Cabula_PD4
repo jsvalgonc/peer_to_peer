@@ -93,6 +93,21 @@ adicionar ficheiros - git add --all (-f)
 commit - git commit -m 'added new files' (colocar o nome da versão)
 push - git push pd4mealplanner/peer_to_peer master
 
+------------- heroku ---------------------------------------
+actualizar app
+git commit -m "First commit_1"
+git push heroku master
+
+ver/ligar server
+heroku ps:scale web=1
+heroku ps
+
+para actualizar o github
+git push -u origin master
+
+heroku run rake db:migrate
+
+ligar DB: heroku pg:psql
 -----------------Mails-------------------------------------
 
 rails generate mailer InvitationMailer - criar mailer
