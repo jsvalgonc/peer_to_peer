@@ -66,7 +66,7 @@ class InvitationsController < ApplicationController
   def send_mail
     @invitation = Invitation.find(params[:invitation][:id])
     @invitation.email =params[:invitation][:email]
-    InvitationMailer.invitation_email(@invitation).deliver_now
+    InvitationMailer.invitation_email(@invitation, request.host_with_port).deliver_now
     @invitation.used="t"
     @invitation.save
     

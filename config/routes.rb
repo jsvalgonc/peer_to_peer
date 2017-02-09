@@ -52,6 +52,11 @@ Rails.application.routes.draw do
   post 'users/index_agents/:id' => 'users#index_agents', as: :generate_invitations
 
   resources :users
+  #root 'users#sign_in'
+  #root to: "devise/sessions#new"
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
   # cria routes para gerir os utilizadores
   #JG 21/11/2015
 

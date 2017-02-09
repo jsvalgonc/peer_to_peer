@@ -20,7 +20,7 @@ Executar script
 .read db/scripts/apaga_tabelas.sql
 
 lista tabelas: .tables
-Sair: .quitse
+Sair: .quit.
 Esquemas: .schema
 
 Criar Tabela 
@@ -62,11 +62,10 @@ Postgres
 iniciar serviço
 sudo service postgresql start
 sudo sudo -u postgres psql
-\c connent
+\c connect => \c d2umu6sglfnpee (Heroku)
 \dt - tabelas
 \l - bases de dados
-q - sair
-
+\q - sair
 
 
 -----------Gems------------------------------
@@ -79,7 +78,7 @@ bundle install
 ----------------Git-----------------------------------
 
 
-
+  
 no C9 
 
 user:jsvalgonc@hotmail.com
@@ -97,6 +96,9 @@ push - git push pd4mealplanner/peer_to_peer master
 actualizar app
 git commit -m "First commit_1"
 git push heroku master
+
+login
+heroku login
 
 ver/ligar server
 heroku ps:scale web=1
