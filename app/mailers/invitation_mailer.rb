@@ -6,7 +6,6 @@ class InvitationMailer < ApplicationMailer
       @invitation = invitation
       #@url = "https://peer-to-peer-lending-jsvalgonc.c9users.io/users/sign_up/" + invitation.inv_key
       @url =  "https://" + host + "/users/sign_up/" + invitation.inv_key
-      byebug
       mail :to => invitation.email, :subject => "Convite"
   end
 end
