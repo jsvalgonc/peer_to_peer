@@ -16,10 +16,8 @@ Scenario:Gerar Convites - 9
   
   Given I am not authenticated 
   Given I am authenticated as "jose.santos@teste.com" with password "password"
-  Then I should see "Agente-Página Principal"
-  When  I press "Convidar"
-  When  I fill "email" with "jsvalgonc@hotmail.com"
-  When  I press "Enviar"
+  When  I fill in first "invitation_email" with "jsvalgonc@hotmail.com"
+  When  I press first "Convidar"
   Then I should see "Convite enviado com sucesso"
   
   

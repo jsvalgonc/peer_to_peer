@@ -1,0 +1,15 @@
+                  List of relations
+ Schema |       Name        | Type  |     Owner      
+--------+-------------------+-------+----------------
+ public | account_movements | table | rcjlkfizzwumhv
+ public | app_parameters    | table | rcjlkfizzwumhv
+ public | deals             | table | rcjlkfizzwumhv
+ public | entrepreneurs     | table | rcjlkfizzwumhv
+ public | installments      | table | rcjlkfizzwumhv
+ public | investors         | table | rcjlkfizzwumhv
+ public | invitations       | table | rcjlkfizzwumhv
+ public | projects          | table | rcjlkfizzwumhv
+ public | schema_migrations | table | rcjlkfizzwumhv
+ public | users             | table | rcjlkfizzwumhv
+(10 rows)
+

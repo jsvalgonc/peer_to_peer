@@ -20,7 +20,7 @@ Executar script
 .read db/scripts/apaga_tabelas.sql
 
 lista tabelas: .tables
-Sair: .quit.
+Sair: .quit.q
 Esquemas: .schema
 
 Criar Tabela 

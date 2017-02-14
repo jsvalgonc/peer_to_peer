@@ -10,8 +10,8 @@ end
   
 def sign_in
   visit '/users/sign_in'
-  fill_in "user_email", :with => @user.email
-  fill_in "user_password", :with => @user.password
+  fill_in "email", :with => @user.email
+  fill_in "password", :with => @user.password
   click_button "Entrar"
 end
 
@@ -85,8 +85,8 @@ end
 
 Given(/^I am authenticated as "(.*?)" with password "(.*?)"$/) do |email, password|
   visit 'sign_in'
-  fill_in "user_email", :with => email
-  fill_in "user_password", :with => password
+  fill_in "email", :with => email
+  fill_in "password", :with => password
   click_button "Entrar"
 end
 
@@ -111,14 +111,21 @@ end
 Given /^I am on (.+)$/ do |page_name|
   path_to_page_name = path_to(page_name)
   visit path_to_page_name
-  save_and_open_page
 end
 
 
 ### WHEN ###
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  save_and_open_page
   fill_in(field, :with => value)
+end
+
+
+When /^(?:|I )fill in first "([^"]*)" with "([^"]*)"$/ do |field, value|
+  #criterio = '#' + field
+  #all(criterio)[1].set(value)
+  fill_in field, :with => value,  :match => :first   
 end
 
 
@@ -137,9 +144,18 @@ When(/^I chosee "(.*?)" from drop box "(.*?)"$/) do |option, box|
   select(option, :from => box)
 end
 
+When /^(?:|I )press first "([^"]*)"$/ do |button|
+  click_button(button, :match => :first)      
+  #byebug
+  #first('tr') do
+  #  click_button(button)
+  #end
+end
+
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
+
 
 When /^(?:|I )choose button "([^"]*)"$/ do |option|
   choose(option)

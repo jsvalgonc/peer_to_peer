@@ -1,6 +1,9 @@
 <%= render "shared/navbar" %>
 <body>
 <h1 class="titulo">Agente</h1>
+<% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert-info" %>
+<% end %>
 <h2>Convites</h2>
 <h4>Convites a enviar</h4>
 <table  class="table_standard">

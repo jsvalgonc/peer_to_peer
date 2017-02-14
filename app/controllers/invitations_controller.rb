@@ -71,7 +71,7 @@ class InvitationsController < ApplicationController
     @invitation.save
     
     respond_to do |format|
-      format.html { redirect_to agent_main_path(current_user.id), notice: 'mail' }
+      format.html { redirect_to agent_main_path(current_user.id), notice: "Convite enviado com sucesso" }
     end
   end
   
