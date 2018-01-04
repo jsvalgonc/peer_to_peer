@@ -11,7 +11,7 @@ Scenario:Invest
   Given I am authenticated as a Financial Manager
   Given I am on the "Projectos" 
   When In line "Arrumar Carros" I press "Edit"
-  Then I should see "Editar Projecto"
+  Then I should see "Projecto - Editar"
   When I chosee "Close" from drop box "project_status"
   When I press "Registar Projecto"
   Then I should see "Project was successfully updated"

@@ -16,7 +16,7 @@ Scenario:Invest
   Given I am authenticated as "a.silva@teste.com" with password "password"
   Given I am on the Selecionar Projecto for "Antonio Silva"
   When In line "Arrumar Carros" I press "Selecionar"
-  Then I should see "Investimento Selecionado"
+  Then I should see "Nova Transacção"
   When fill in "deal_value" with "50"
   And  I press "Registar"
   Then I should see "Interesse Registado"

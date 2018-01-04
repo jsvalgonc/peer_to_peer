@@ -137,6 +137,7 @@ q(uit) to leave the debugger and shut down Rails
 Cucumber
 
 bundle exec rake cucumber
+bundle exec cucumber
 bundle exec cucumber features/step_definitions/RegistarProjecto.feature --require features (1 só feature, acrescentar :x – número da linha a partir)
 
 	

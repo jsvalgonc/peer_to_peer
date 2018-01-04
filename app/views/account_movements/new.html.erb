@@ -44,13 +44,10 @@
     <td><%= f.select(:movement_type, AccountMovement.movement_types.keys.map {|movement_type| [movement_type.titleize,movement_type]} ) %></td></tr>
   </div>
   </table>
-
   <div class="actions">
     <%= f.submit "Registar" %>
   </div>
-  
 <% end %>
 </div>
-
 <%= link_to 'Voltar', account_movements_path %>
 

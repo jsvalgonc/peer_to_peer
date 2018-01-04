@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
   
   def calculate_installments
     #vai buscar a data
-     @projects = Project.where("status=" + Project.statuses[:open].to_s + " AND start_date<Datetime('" + @current_date.strftime("%Y-%m-%d") +"') AND end_date>Datetime('" + @current_date.strftime("%Y-%m-%d") +"')") 
+     @projects = Project.where("status=" + Project.statuses[:open].to_s + " AND start_date<to_timestamp('" + @current_date.strftime("%Y-%m-%d") +"','yyyy-mm-dd') AND end_date>to_timestamp('" + @current_date.strftime("%Y-%m-%d") +"','yyyy-mm-dd')") 
     #vai buscar todos os projecto vivos à data
     @projects.each do |project|
       installment = Installment.new

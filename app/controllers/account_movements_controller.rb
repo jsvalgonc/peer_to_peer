@@ -25,6 +25,15 @@ class AccountMovementsController < ApplicationController
     @investor = Investor.find(params[:investor_id])
     @account_movement = @investor.account_movements.build
     #@account_movement = AccountMovement.new
+    respond_to do |format|
+      if @account_movement.save
+        format.html { redirect_to account_movements_list_investor_path(@investor), notice: 'Movimento em Conta Registado.' }
+        format.json { render :show, status: :created, location: @account_movement }
+      else
+        format.html { render :new }
+        format.json { render json: @account_movement.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
 
@@ -42,7 +51,7 @@ class AccountMovementsController < ApplicationController
     #@account_movement = AccountMovement.new(account_movement_params)
     respond_to do |format|
       if @account_movement.save
-        format.html { redirect_to account_movements_list_investor_path(@investor), notice: 'Account movement was successfully created.' }
+        format.html { redirect_to account_movements_list_investor_path(@investor), notice: 'Movimento em Conta Registado.' }
         format.json { render :show, status: :created, location: @account_movement }
       else
         format.html { render :new }

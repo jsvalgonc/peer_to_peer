@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<CstmrDrctDbtInitn>
+  <GrpHdr>
+    <MsgId>123456</MsgId>
+    <CreDtTm>2017-02/20/17-59T22:59:12Z</CreDtTm>
+    <NbOfTxs/>
+    <CtrlSum>0</CtrlSum>
+    <InitgPty>
+      <Nm>Peer to Peer</Nm>
+    </InitgPty>
+    <PmtInf/>
+  </GrpHdr>
+</CstmrDrctDbtInitn>

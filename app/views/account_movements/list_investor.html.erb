@@ -1,7 +1,7 @@
 <%= render "shared/navbar" %>
 <div>
-<p id="notice"><%= notice %></p>
 <h1 class="titulo">Extrato de Movimentos - Conta Corrente</h1>
+<p id="notice"><%= notice %></p>
 <p></p>
   <strong class="titulo_campo">Investor:</strong>
   <%=  @account_movements.any? ? @account_movements[0].investor.full_name : ''%>

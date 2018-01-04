@@ -15,6 +15,7 @@ module NavigationHelpers
     when /main page for a manager/ then '/application/main_admin'
     when /"Convite para registo" with envitation "(.*)"$/ then '/users/sign_up/' + $1
     #when /Consultar Conta/ then '/account_movements/list_investor/'
+    
     else
       begin
         page_name =~ /the (.*) page/
