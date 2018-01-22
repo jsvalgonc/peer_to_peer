@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 </head>
 <body>
 <div id="flash">
@@ -16,5 +17,6 @@
 
 <%= yield %>
 <p><%= link_to 'Sign_out', destroy_user_session_path %></p>
+
 </body>
 </html>
